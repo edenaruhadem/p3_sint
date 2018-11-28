@@ -36,6 +36,8 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import Xbean.GC1Anios;
 import Xbean.GC1Discos;
+import Xbean.GC1Resultado;
+import Xbean.GC1Canciones;
 
 //import Xbean.FileError;
 
@@ -53,11 +55,11 @@ public class Sint48P3 extends HttpServlet
     public String rutaXml = "http://gssi.det.uvigo.es/users/agil/public_html/SINT/18-19/";
     GC1Anios ga; //Objeto java bean anios
     GC1Discos gd; //Objeto java bean discos
+    GC1Canciones gc;
+    GC1Resultado gr;
 	//Declaración de estructuras de datos
     public static HashMap<String,Document> mapDocs = new HashMap<String,Document>();
     public static LinkedList<String> listaFicheros = new LinkedList<String>();    
-    //public  ArrayList<Disco>listaDiscos = new ArrayList<Disco>();
-    //public  ArrayList<Cancion>listaCanciones = new ArrayList<Cancion>();
     //public  ArrayList<Cancion>Resultado = new ArrayList<Cancion>();
     //public static ArrayList<String>fichErroneos = new ArrayList<String>();
     public Map<String,String>Errores= new HashMap<String,String>();
@@ -166,11 +168,13 @@ public class Sint48P3 extends HttpServlet
 	    String p = req.getParameter("p");
         String fase = req.getParameter("pfase");
         String anio = req.getParameter("panio");
-        //String idd = req.getParameter("pidd");
-        //String idc = req.getParameter("pidc");
+        String idd = req.getParameter("pidd");
+        String idc = req.getParameter("pidc");
         String auto = req.getParameter("auto");
         ga = new GC1Anios();
         gd = new GC1Discos();
+        gc = new GC1Canciones();
+        gr = new GC1Resultado();
         //----------------------------- Objetos para las java beans ---------------------
         //fe = new GetFileError();             
         //req.setAttribute("anioBean",ga); //Esto para los años       
@@ -199,8 +203,8 @@ public class Sint48P3 extends HttpServlet
                     //case "02": doGetFase02(auto,sc,req,res); break;
                     case "11": doGetFase11(auto,sc,req,res,ga); break;
                     case "12": doGetFase12(auto,sc,req,res,anio,gd); break;
-                    //case "13": doGetFase13(res,auto,anio,idd); break;
-                    //case "14": doGetFase14(res,auto,anio,idd,idc); break;
+                    case "13": doGetFase13(auto,sc,req,res,anio,idd,gc); break;
+                    case "14": doGetFase14(auto,sc,req,res,anio,idd,idc,gr); break;
                 }
             }
 	    }        
@@ -380,72 +384,67 @@ public class Sint48P3 extends HttpServlet
         }               
     }//doGetFase12
 
-    /*public void doGetFase13(HttpServletResponse res, String auto, String anio, String idd)throws IOException
-    {
+    public void doGetFase13(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res, String anio, String idd, GC1Canciones gc)throws IOException, ServletException
+    {        
         if(anio==null)
         {
-            wrongReqAnio(res);
+            RequestDispatcher rd = sc.getRequestDispatcher("/wrongReqAnio.jsp");
+            rd.forward(req,res);
         }
         else if(idd==null)
         {
-            wrongReqIdd(res);
+            RequestDispatcher rd = sc.getRequestDispatcher("/wrongReqIdd.jsp");
+            rd.forward(req,res);            
         }
         else
         {
-            listaCanciones.clear();
-            ArrayList<Integer> dur = new ArrayList<Integer>();        
-            listaCanciones = getC1Canciones(anio, idd);
-            for(int i=0;i<listaCanciones.size();i++)
-            {
-                Cancion objCancion = listaCanciones.get(i);
-                dur.add(Integer.parseInt(objCancion.getDuracion(objCancion))); 
-            }
-            Collections.sort(dur);
-            for(int j = 0;j<dur.size();j++)
-            {
-                Integer durlist = dur.get(j);
-                for(int k = 0;k<listaCanciones.size();k++)
-                {
-                    Cancion obj = listaCanciones.get(k);
-                    String dura = obj.getDuracion(obj);
-                    if(Integer.toString(durlist).equals(dura))
-                    {
-                        listaCanciones.remove(obj);
-                        listaCanciones.add(obj);
-                    }
-                }           
-            }        
+            gc.setCancion(mapDocs,anio,idd);
+            gc.setAn(anio);
+            gc.setId(idd);
+            req.setAttribute("canBean",gc);                    
             if(auto==null)
             {
-                doHtmlF13(res,anio, idd, listaCanciones);                
+                RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF13.jsp");
+                rd.forward(req,res);
+                //doHtmlF13(res,anio, idd, listaCanciones);                
             }
             else if(auto.equals("si"))
             {
-                doXmlF13(res,idd,listaCanciones);
+                RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF13.jsp");
+                rd.forward(req,res);
+                //doXmlF13(res,idd,listaCanciones);
             }
 
         }               
     }//doGetFase13
 
-    public void doGetFase14(HttpServletResponse res, String auto, String anio, String idd, String idc)throws IOException
-    {   
+    public void doGetFase14(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res, String anio, String idd, String idc, GC1Resultado gr)throws IOException, ServletException
+    {           
         if(anio==null)
         {
-            wrongReqAnio(res);
+            RequestDispatcher rd = sc.getRequestDispatcher("/wrongReqAnio.jsp");
+            rd.forward(req,res);            
         }
         else if(idd==null)
         {
-            wrongReqIdd(res);
+            RequestDispatcher rd = sc.getRequestDispatcher("/wrongReqIdd.jsp");
+            rd.forward(req,res);
         }
         else if(idc==null)
         {
-            wrongReqIdc(res);
+            RequestDispatcher rd = sc.getRequestDispatcher("/wrongReqIdc.jsp");
+            rd.forward(req,res);
+            //wrongReqIdc(res);
         }
         else
         {
-            Resultado.clear();
-            ArrayList<String> titulos = new ArrayList<String>();      
-            Resultado = getC1Resultado(anio, idd, idc);
+            gr.setResultado(mapDocs,anio,idd,idc);
+            gr.setAn(anio);
+            gr.setId(idd);
+            gr.setIc(idc);
+            req.setAttribute("resBean",gr);
+            
+            /*ArrayList<String> titulos = new ArrayList<String>();            
             for(int i=0;i<Resultado.size();i++)
             {
                 Cancion objRes = Resultado.get(i);
@@ -466,68 +465,22 @@ public class Sint48P3 extends HttpServlet
                         Resultado.add(obj);
                     }
                 }           
-            }               
+            }*/               
             if(auto==null)
             {
-                doHtmlF14(res,anio, idd, idc, Resultado);                
+                RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF14.jsp");
+                rd.forward(req,res);
+                //doHtmlF14(res,anio, idd, idc, Resultado);                
             }
             else if(auto.equals("si"))
             {
-                doXmlF14(res,idc,Resultado);
+                RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF14.jsp");
+                rd.forward(req,res);
+                //doXmlF14(res,idc,Resultado);
             }
         }               
-    }//doGetFase14*/
-    
-    /*public ArrayList<Cancion> getC1Canciones (String anio, String idd) //Type Cancion
-    {
-        Document res = null;
-        String atributoUno = null;
-        String atributoDos = null;
-        String atributoTres = null;
-        String atributoCuatro = null;
-        String atributoCinco = null;
-        String atributoSeis = "";    
-        for (String key:mapDocs.keySet())
-        {
-            if(anio.equals(key))
-            {
-                res = mapDocs.get(key);
-            }
-        }
-        Element raiz = res.getDocumentElement(); //Obtencion del elemento Songs
-        NodeList canciones = raiz.getElementsByTagName("Cancion");
-        for(int i = 0;i<canciones.getLength();i++) //El acceso al texto de IML produce redirecciones a nuevos documentos
-        {
-            Node itemcancion = canciones.item(i);
-            String stridc=itemcancion.getAttributes().getNamedItem("idc").getTextContent();
-            atributoCuatro = stridc;
-            String substridd = idd.substring(0,12);
-            String substridc = stridc.substring(0,12);
-            if (substridc.equals(substridd))
-            {
-                NodeList itemCancionChild = itemcancion.getChildNodes();
-                for(int j = 0;j<itemCancionChild.getLength(); j++)
-                {
-                    if(itemCancionChild.item(j).getNodeName().equals("Titulo"))
-                    {
-                        atributoUno = itemCancionChild.item(j).getTextContent();
-                    }
-                    if(itemCancionChild.item(j).getNodeName().equals("Genero"))
-                    {
-                        atributoDos = itemCancionChild.item(j).getTextContent();
-                    }
-                    if(itemCancionChild.item(j).getNodeName().equals("Duracion"))
-                    {
-                        atributoTres = itemCancionChild.item(j).getTextContent();
-                    }                
-                }
-                listaCanciones.add(new Cancion(atributoUno,atributoDos,atributoTres, atributoCuatro, atributoCinco, atributoSeis));
-            }
-        }
-        return listaCanciones;
-    }//getC1Canciones
-
-    public ArrayList<Cancion> getC1Resultado (String anio, String idd, String idc) //Todas las canciones de un interprete que duren menos que una elegida
+    }//doGetFase14
+    /*public ArrayList<Cancion> getC1Resultado (String anio, String idd, String idc) //Todas las canciones de un interprete que duren menos que una elegida
     {
         System.out.println("anioooooooooooooooooooooo"+anio);
         System.out.println("iddddddddddddddddddd"+idd);
@@ -731,14 +684,7 @@ public class Sint48P3 extends HttpServlet
         out.println("<p>sint48. @Diego R&iacute;os Castro.</p>");                
         out.println("</footer>");
         out.println("</html>");
-    }//doHtmlF13
-    public void wrongReqIdd(HttpServletResponse res) throws IOException
-    {
-        res.setContentType("text/xml");
-        PrintWriter out = res.getWriter();
-        out.println("<?xml version='1.0' encoding='utf-8' ?>");
-        out.println("<wrongRequest>no param:pidd</wrongRequest>");
-    }
+    }//doHtmlF13    
 
     public void doXmlF13(HttpServletResponse res,String idd, ArrayList<Cancion> listaCanciones)throws IOException
     {
@@ -785,13 +731,7 @@ public class Sint48P3 extends HttpServlet
         out.println("</footer>");
         out.println("</html>"); 
     }//doHtmlF14
-    public void wrongReqIdc(HttpServletResponse res) throws IOException
-    {
-        res.setContentType("text/xml");
-        PrintWriter out = res.getWriter();
-        out.println("<?xml version='1.0' encoding='utf-8' ?>");
-        out.println("<wrongRequest>no param:pidc</wrongRequest>");
-    }
+    
 
     public void doXmlF14(HttpServletResponse res,String idc, ArrayList<Cancion> Resultado)throws IOException
     {
