@@ -66,6 +66,8 @@ public class Sint48P3 extends HttpServlet
 //------------------------------------------------------------SERVLET.INIT------------------------------------------------------------------------        
     public void init(ServletConfig config) throws ServletException
     {
+        /*ServletContext sc = getServletContext();
+        ServletContext context = config.sc;*/
         ServletContext context = config.getServletContext();        
         File f= new File(context.getRealPath("iml.xsd"));
         String dir = f.getAbsolutePath();        
@@ -154,7 +156,7 @@ public class Sint48P3 extends HttpServlet
     }//Init
     
 //-------------------------------------------------------------SERVLET.DOGET()--------------------------------------------------------------    
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
+    public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
     {        
         //res.setContentType("text/html;charset=utf-8"); 
 		//req.setCharacterEncoding("UTF8");
@@ -170,13 +172,10 @@ public class Sint48P3 extends HttpServlet
         //req.setAttribute("anioBean",ga); //Esto para los años        
         /*RequestDispatcher rd = sc.getRequestDispatcher("/fase11.jsp");
         rd.forward(req,res);*/
-        ServletContext sc = getServletContext();
+        ServletContext sc = req.getServletContext();
         if((p==null)&&(auto.equals("si")))
         {
-            doXmlNop(res); 
-            /*ServletContext sc = getServletContext();
-        RequestDispatcher rd = sc.getRequestDispatcher("/pag.jsp");
-        rd.forward(req,res);*/
+            doXmlNop(res);           
         }
         else if((!p.equals("d4r18c392b"))&&(auto.equals("si")))
         {
@@ -186,22 +185,21 @@ public class Sint48P3 extends HttpServlet
 	    {
             String faseinicial = "01";
             if((fase==null) || (fase.equals(faseinicial)))
-            {
-                
+            {                
                 doGetFase01(auto,sc,req,res);
             }
-            /*else
+            else
             {
 		        switch(fase)
                 {                        
-                    //case "01": doGetFase01(res,auto); break;
+                    case "01": doGetFase01(auto,sc,req,res); break;
                     //case "02": doGetFase02(auto,sc,req,res); break;
                     //case "11": doGetFase11(auto,sc,req,res); break;
                     //case "12": doGetFase12(res,auto,anio); break;
                     //case "13": doGetFase13(res,auto,anio,idd); break;
                     //case "14": doGetFase14(res,auto,anio,idd,idc); break;
                 }
-            }*/
+            }
 	    }        
     }//doGet
     
@@ -226,13 +224,13 @@ public class Sint48P3 extends HttpServlet
         //req.setAttribute("feBean",fe);
         if(auto==null)
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF01.jsp");
+            RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF01.jsp"); //habia sc.
             rd.forward(req,res);
             //doHtmlF01(res); // doHtmlF01.jsp                
         }
         else if(auto.equals("si"))
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF01.jsp");
+            RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF01.jsp"); //habia sc.
             rd.forward(req,res);
             //doXmlF01(res); //doXmlF01.jsp
         }        
