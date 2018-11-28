@@ -35,6 +35,7 @@ import org.xml.sax.*;
 import org.xml.sax.helpers.DefaultHandler;
 
 import Xbean.GC1Anios;
+import Xbean.GC1Discos;
 
 //import Xbean.FileError;
 
@@ -51,10 +52,10 @@ public class Sint48P3 extends HttpServlet
     public static String url;
     public String rutaXml = "http://gssi.det.uvigo.es/users/agil/public_html/SINT/18-19/";
     GC1Anios ga; //Objeto java bean anios
+    GC1Discos gd; //Objeto java bean discos
 	//Declaración de estructuras de datos
     public static HashMap<String,Document> mapDocs = new HashMap<String,Document>();
-    public static LinkedList<String> listaFicheros = new LinkedList<String>();
-    public  ArrayList<String>Anios = new ArrayList<String>();
+    public static LinkedList<String> listaFicheros = new LinkedList<String>();    
     //public  ArrayList<Disco>listaDiscos = new ArrayList<Disco>();
     //public  ArrayList<Cancion>listaCanciones = new ArrayList<Cancion>();
     //public  ArrayList<Cancion>Resultado = new ArrayList<Cancion>();
@@ -169,6 +170,7 @@ public class Sint48P3 extends HttpServlet
         //String idc = req.getParameter("pidc");
         String auto = req.getParameter("auto");
         ga = new GC1Anios();
+        gd = new GC1Discos();
         //----------------------------- Objetos para las java beans ---------------------
         //fe = new GetFileError();             
         //req.setAttribute("anioBean",ga); //Esto para los años       
@@ -196,7 +198,7 @@ public class Sint48P3 extends HttpServlet
                     //case "01": doGetFase01(auto,sc,req,res); break;
                     //case "02": doGetFase02(auto,sc,req,res); break;
                     case "11": doGetFase11(auto,sc,req,res,ga); break;
-                    //case "12": doGetFase12(res,auto,anio); break;
+                    case "12": doGetFase12(auto,sc,req,res,anio,gd); break;
                     //case "13": doGetFase13(res,auto,anio,idd); break;
                     //case "14": doGetFase14(res,auto,anio,idd,idc); break;
                 }
@@ -339,67 +341,46 @@ public class Sint48P3 extends HttpServlet
     public void doGetFase11(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res, GC1Anios ga)throws IOException, ServletException
     {
         ga.setAnio(mapDocs);
-        req.setAttribute("aniBean",ga);
-        //Anios.clear();        
-        //Anios = getC1Anios();
-        //Collections.sort(Anios);
+        req.setAttribute("aniBean",ga);        
         if(auto==null)
         {
             RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF11.jsp"); //habia sc.
-            rd.forward(req,res);
-            //doHtmlF11(res,Anios);  //Esto debe ser una jsp              
+            rd.forward(req,res);                          
         }
         else if(auto.equals("si"))
         {
             RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF11.jsp"); //habia sc.
-            rd.forward(req,res);
-            //doXmlF11(res,Anios); //Esto debe ser otra jsp
+            rd.forward(req,res);            
         }        
     }//doGetFase11
 
-    /*public void doGetFase12(HttpServletResponse res, String auto, String anio)throws IOException
+    public void doGetFase12(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res, String anio, GC1Discos gd)throws IOException, ServletException
     {
+                
         if(anio==null)
         {
-            wrongReqAnio(res);
+            RequestDispatcher rd = sc.getRequestDispatcher("/wrongReqAnio.jsp");
+            rd.forward(req,res);            
         }
         else
         {
-            listaDiscos.clear();
-            ArrayList<String> interpretes = new ArrayList<String>();                
-            listaDiscos = getC1Discos(anio);
-            for(int i=0;i<listaDiscos.size();i++)
-            {
-                Disco objDisco = listaDiscos.get(i);
-                interpretes.add(objDisco.getInterprete(objDisco)); 
-            }
-            Collections.sort(interpretes);        
-            for(int j = 0;j<interpretes.size();j++)
-            {
-                String interlist = interpretes.get(j);
-                for(int k = 0;k<listaDiscos.size();k++)
-                {
-                    Disco obj = listaDiscos.get(k);
-                    String inter = obj.getInterprete(obj);
-                    if(inter.equals(interlist))
-                    {
-                        listaDiscos.remove(obj);
-                        listaDiscos.add(obj);
-                    }
-                }           
-            }
+            gd.setDisco(mapDocs,anio);
+            gd.setAn(anio);
+            req.setAttribute("disBean",gd);            
             if(auto==null)
             {
-                doHtmlF12(res,anio, listaDiscos);                
+                RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF12.jsp");
+                rd.forward(req,res);                                
             }
             else if(auto.equals("si"))
             {
-                doXmlF12(res,anio,listaDiscos);
+                RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF12.jsp");
+                rd.forward(req,res);                
             }
         }               
     }//doGetFase12
 
-    public void doGetFase13(HttpServletResponse res, String auto, String anio, String idd)throws IOException
+    /*public void doGetFase13(HttpServletResponse res, String auto, String anio, String idd)throws IOException
     {
         if(anio==null)
         {
@@ -495,79 +476,9 @@ public class Sint48P3 extends HttpServlet
                 doXmlF14(res,idc,Resultado);
             }
         }               
-    }//doGetFase14*/     
+    }//doGetFase14*/
     
-    /*public ArrayList<String> getC1Anios()
-    {	
-        for(String key:mapDocs.keySet())
-        {            
-            Anios.add(key);
-        }	
-	    return Anios;    
-    }//getC1Anios*/
-
-    /*public ArrayList<Disco> getC1Discos (String anio) //Type Disco
-    {
-        Document res = null;
-        String atributoUno = null;
-        String atributoDos = null;
-        String atributoTres = null;
-        String atributoCuatro = null;
-        String idiomaPais = null;
-        Integer resComp = 0;
-        Integer resCompMem = 0;        
-        for (String key:mapDocs.keySet())
-        {
-            if(anio.equals(key))
-            {
-                res = mapDocs.get(key);
-            }
-        }
-        Element raiz = res.getDocumentElement(); //Obtencion del elemento Songs
-        NodeList pais = raiz.getElementsByTagName("Pais");
-        NodeList discos = raiz.getElementsByTagName("Disco");
-        for(int i = 0; i<pais.getLength();i++)
-        {
-            Node itemPais = pais.item(i);       
-            idiomaPais = itemPais.getAttributes().getNamedItem("lang").getTextContent();          
-            for(int j = 0;j<discos.getLength();j++) //El acceso al texto de IML produce redirecciones a nuevos documentos
-            {            
-                Node itemDisco = discos.item(j);
-                Node parentDisco = itemDisco.getParentNode();
-                if(parentDisco.equals(itemPais))
-                {
-                    NamedNodeMap atributosDisco = itemDisco.getAttributes();
-                    if(atributosDisco.getLength()>1)
-                    {
-                        atributoTres=atributosDisco.getNamedItem("idd").getTextContent();
-                        atributoCuatro=atributosDisco.getNamedItem("langs").getTextContent();
-                    }
-                    else
-                    {
-                        atributoTres=atributosDisco.getNamedItem("idd").getTextContent();
-                        atributoCuatro=idiomaPais;
-                    }                                                         
-                    NodeList itemDiscoChild = itemDisco.getChildNodes();
-                    for(int k = 0;k<itemDiscoChild.getLength(); k++)
-                    {
-                        if(itemDiscoChild.item(k).getNodeName().equals("Titulo"))
-                        {
-                            atributoUno = itemDiscoChild.item(k).getTextContent();
-                        }
-                        if(itemDiscoChild.item(k).getNodeName().equals("Interprete"))
-                        {
-                            atributoDos = itemDiscoChild.item(k).getTextContent();
-                        }                
-                    }
-                    Disco obj = new Disco(atributoUno,atributoDos,atributoTres, atributoCuatro);
-                    listaDiscos.add(obj);                                          
-                }                                 
-            }              
-        }
-        return listaDiscos;
-    }//GetC1Discos
-
-    public ArrayList<Cancion> getC1Canciones (String anio, String idd) //Type Cancion
+    /*public ArrayList<Cancion> getC1Canciones (String anio, String idd) //Type Cancion
     {
         Document res = null;
         String atributoUno = null;
@@ -780,117 +691,9 @@ public class Sint48P3 extends HttpServlet
         }
         System.out.println("Hizo el resultado");
         return Resultado;        
-    }//getC1Resultado*/
+    }//getC1Resultado*/    
 
-    /*public void doHtmlF11(HttpServletResponse res, ArrayList<String> Anios)throws IOException
-    {                              
-        PrintWriter out = res.getWriter();
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<meta charset='utf-8'></meta>");
-        out.println("<title>Sint: Pr&aacute;ctica 2. Consulta de canciones</title>");
-	    out.println("<link rel='stylesheet' type='text/css' href='iml.css'></link>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Servicio de consulta de canciones</h1>");
-        out.println("<h2>Consulta 1</h2>");    
-        out.println("<h3>Selecciona un a&ntilde;o:</h3>");
-        out.println("<form name = 'miformfase11'>");
-	    out.println("<input type = 'hidden' name = 'p' value = 'd4r18c392b'></input>");    
-        out.println("<input type = 'hidden' name = 'pfase' value = '12'></input>");        
-        for(int i=0;i<Anios.size();i++)
-        {
-            if(i==0)
-            {
-                out.println("<p><input type = 'radio' name = 'panio' value = "+Anios.get(i)+" checked>"+Integer.toString(i+1)+".- "+Anios.get(i)+"</input></p>");
-            }
-            else out.println("<p><input type = 'radio' name = 'panio' value = "+Anios.get(i)+">"+Integer.toString(i+1)+".- "+Anios.get(i)+"</input></p>");            
-        }       
-        out.println("<br></br>");        
-        out.println("<input type = 'submit' class = 'buttonSubmit'></input>");            
-        out.println("</form>");
-        out.println("<button type = 'button' class = 'buttonAtras' onclick=\"window.location='/sint48/P2IM?p=d4r18c392b&pfase=01'\">Atr&aacute;s</button> ");
-        out.println("</body>");
-        out.println("<footer>");
-        out.println("<p>sint48. @Diego R&iacute;os Castro.</p>");                
-        out.println("</footer>");
-        out.println("</html>");
-    }//doHtmlF11*/
-
-    /*public void doXmlF11(HttpServletResponse res,ArrayList<String> Anios)throws IOException
-    {    
-        res.setContentType("text/xml");    
-        PrintWriter out = res.getWriter();
-        out.println("<?xml version='1.0' encoding='utf-8' ?>");
-        out.println("<anios>");
-        for(int i=0; i<Anios.size();i++)
-        {
-                out.println("<anio>"+Anios.get(i)+"</anio>");
-        }
-        out.println("</anios>");
-    }//doXmlF11*/
-
-    /*public void doHtmlF12(HttpServletResponse res, String anio, ArrayList<Disco> listaDiscos)throws IOException
-    {                              
-        PrintWriter out = res.getWriter();
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Sint: Pr&aacute;ctica 2. Consulta de canciones</title>");
-        out.println("<meta charset='utf-8'></meta>");
-	    out.println("<link rel='stylesheet' type='text/css' href='iml.css'></link>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Servicio de consulta de canciones</h1>");    
-        out.println("<h2>Consulta 1: A&ntilde;o="+anio+"</h2>");    
-        out.println("<h3>Selecciona un disco:</h3>");
-        out.println("<form name = 'miformfase12'>");
-	    out.println("<input type = 'hidden' name = 'p' value = 'd4r18c392b'></input>");
-        out.println("<input type = 'hidden' name = 'pfase' value = '13'></input>");	
-        out.println("<input type = 'hidden' name = 'panio' value ='"+anio+"'></input>");        
-        for(int i=0;i<listaDiscos.size();i++)
-        {
-            Disco d = listaDiscos.get(i);
-            if(i==0)
-            {
-                out.println("<p><input type = 'radio' name = 'pidd' value = "+d.getIDD(d)+" checked>"+Integer.toString(i+1)+".-"+" T&iacute;tulo ='"+d.getTitulo(d)+"' --- IDD ='"+d.getIDD(d)+"' --- Int&eacute;rprete ='"+d.getInterprete(d)+"' --- Idiomas ='"+d.getIdiomas(d)+"'</input></p>");
-            }
-            else out.println("<p><input type = 'radio' name = 'pidd' value = "+d.getIDD(d)+">"+Integer.toString(i+1)+".-"+" T&iacute;tulo ='"+d.getTitulo(d)+"' --- IDD ='"+d.getIDD(d)+"' --- Int&eacute;rprete ='"+d.getInterprete(d)+"' --- Idiomas ='"+d.getIdiomas(d)+"'</input></p>");        
-        }       
-        out.println("<br></br>");    
-        out.println("<input type = 'submit' class = 'buttonSubmit'></input>");
-        out.println("</form>");
-        out.println("<button class = 'buttonAtras' onclick=\"window.location='/sint48/P2IM?p=d4r18c392b&pfase=11'\">Atr&aacute;s</button> ");
-        out.println("<br></br>");
-        out.println("<button class = 'buttonInicio' onclick=\"window.location='/sint48/P2IM?p=d4r18c392b&pfase=01'\">Inicio</button> ");
-        out.println("</body>");
-        out.println("<footer>");
-        out.println("<p>sint48. @Diego R&iacute;os Castro.</p>");                
-        out.println("</footer>");
-        out.println("</html>");
-    }//doHtamlF12
-    public void wrongReqAnio(HttpServletResponse res) throws IOException
-    {
-        res.setContentType("text/xml");
-        PrintWriter out = res.getWriter();            
-        out.println("<?xml version='1.0' encoding='utf-8' ?>");
-        out.println("<wrongRequest>no param:panio</wrongRequest>");
-    }
-
-    public void doXmlF12(HttpServletResponse res,String anio, ArrayList<Disco> listaDiscos)throws IOException
-    {
-        res.setContentType("text/xml");
-        PrintWriter out = res.getWriter();            
-        out.println("<?xml version='1.0' encoding='utf-8' ?>");
-        out.println("<discos>");
-        for(int i=0;i<listaDiscos.size();i++)
-        {
-            Disco d = listaDiscos.get(i);                       
-            out.println("<disco idd='"+d.getIDD(d)+"' interprete='"+d.getInterprete(d)+"' langs='"+d.getIdiomas(d)+"'>"+d.getTitulo(d)+"</disco>");
-        }
-        out.println("</discos>");        
-    }//doXmlF12
-
-    public void doHtmlF13(HttpServletResponse res, String anio, String idd, ArrayList<Cancion> listaCanciones)throws IOException
+    /*public void doHtmlF13(HttpServletResponse res, String anio, String idd, ArrayList<Cancion> listaCanciones)throws IOException
     {                              
         PrintWriter out = res.getWriter();
         out.println("<html>");
@@ -1003,23 +806,7 @@ public class Sint48P3 extends HttpServlet
             out.println("<song descripcion='"+obj.getDescripcion(obj)+"' premios='"+obj.getPremios(obj)+"'>"+obj.getTitulo(obj)+"</song>");                
         }
         out.println("</songs>");                
-    }//doXmlF14*/
-
-    /*public void doXmlNop(HttpServletResponse res)throws IOException
-    {
-        res.setContentType("text/xml");
-        PrintWriter out = res.getWriter();
-        out.println("<?xml version='1.0' encoding='utf-8' ?>");
-        out.println("<wrongRequest>no passwd</wrongRequest>");        
-    }//doXmlNop*/
-
-    /*public void doXmlIp(HttpServletResponse res)throws IOException
-    {
-        res.setContentType("text/xml");
-        PrintWriter out = res.getWriter();
-        out.println("<?xml version='1.0' encoding='utf-8' ?>");
-        out.println("<wrongRequest>bad passwd</wrongRequest>");        
-    }//doXmlIp*/
+    }//doXmlF14*/   
 //}//Fin SINT48P2
 
 //-----------------------------------------------------------------ERROR CLASS-----------------------------------------------------------------------
