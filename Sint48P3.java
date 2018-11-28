@@ -5,6 +5,7 @@ import java.net.*;
 //Servlets
 import javax.servlet.*;
 import javax.servlet.http.*;
+//import javax.servlet.jsp.jstl.*;
 //Estructuras de datos
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +34,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.*;
 import org.xml.sax.helpers.DefaultHandler;
 
+import Xbean.GC1Anios;
+
 //import Xbean.FileError;
 
 import org.xml.sax.helpers.*;
@@ -47,7 +50,7 @@ public class Sint48P3 extends HttpServlet
     static String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";    
     public static String url;
     public String rutaXml = "http://gssi.det.uvigo.es/users/agil/public_html/SINT/18-19/";
-    //GetFileError fe; //Objeto java bean file error
+    GC1Anios ga; //Objeto java bean anios
 	//Declaración de estructuras de datos
     public static HashMap<String,Document> mapDocs = new HashMap<String,Document>();
     public static LinkedList<String> listaFicheros = new LinkedList<String>();
@@ -157,29 +160,27 @@ public class Sint48P3 extends HttpServlet
     
 //-------------------------------------------------------------SERVLET.DOGET()--------------------------------------------------------------    
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
-    {        
-        //res.setContentType("text/html;charset=utf-8"); 
-		//req.setCharacterEncoding("UTF8");
-        
+    {       
+        ServletContext sc = req.getServletContext();
 	    String p = req.getParameter("p");
         String fase = req.getParameter("pfase");
         String anio = req.getParameter("panio");
         //String idd = req.getParameter("pidd");
         //String idc = req.getParameter("pidc");
         String auto = req.getParameter("auto");
+        ga = new GC1Anios();
         //----------------------------- Objetos para las java beans ---------------------
         //fe = new GetFileError();             
-        //req.setAttribute("anioBean",ga); //Esto para los años        
-        /*RequestDispatcher rd = sc.getRequestDispatcher("/fase11.jsp");
-        rd.forward(req,res);*/
-        ServletContext sc = req.getServletContext();
+        //req.setAttribute("anioBean",ga); //Esto para los años       
         if((p==null)&&(auto.equals("si")))
         {
-            doXmlNop(res);           
+            RequestDispatcher rd = sc.getRequestDispatcher("/doXmlNop.jsp"); //habia sc.
+            rd.forward(req,res);                       
         }
         else if((!p.equals("d4r18c392b"))&&(auto.equals("si")))
         {
-            doXmlIp(res);
+            RequestDispatcher rd = sc.getRequestDispatcher("/doXmlIp.jsp"); //habia sc.
+            rd.forward(req,res);            
         }        
 	    else
 	    {
@@ -192,9 +193,9 @@ public class Sint48P3 extends HttpServlet
             {
 		        switch(fase)
                 {                        
-                    case "01": doGetFase01(auto,sc,req,res); break;
+                    //case "01": doGetFase01(auto,sc,req,res); break;
                     //case "02": doGetFase02(auto,sc,req,res); break;
-                    //case "11": doGetFase11(auto,sc,req,res); break;
+                    case "11": doGetFase11(auto,sc,req,res,ga); break;
                     //case "12": doGetFase12(res,auto,anio); break;
                     //case "13": doGetFase13(res,auto,anio,idd); break;
                     //case "14": doGetFase14(res,auto,anio,idd,idc); break;
@@ -235,43 +236,7 @@ public class Sint48P3 extends HttpServlet
             //doXmlF01(res); //doXmlF01.jsp
         }        
     }//doHtmlF01
-    /*public void doHtmlF01(HttpServletResponse res)throws IOException 
-    {                            
-        PrintWriter out = res.getWriter();                
-        out.println("<html>");
-        out.println("<head>");        
-        out.println("<meta charset='utf-8'></meta>");
-        out.println("<title>Sint: Pr&aacute;ctica 2. Consulta de canciones</title>");    
-        out.println("<link rel='stylesheet' type='text/css' href='iml.css'></link>"); //href='iml.css' en el lab
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Servicio de consulta de canciones</h1>");
-        out.println("<h2>Bienvenido a este servicio.</h2>");                                 
-        out.println("<form name = 'miformfase01' action=''>");
-        out.println("<a href = '/sint48/P2IM?p=d4r18c392b&pfase=02'>Pulsa aqu&iacute; para ver los ficheros err&oacute;neos</a>");
-        out.println("<h3>Selecciona una consulta:</h3>");
-        out.println("<input type = 'radio' checked>Consulta1: Canciones de un int&eacute;rprete que duran menos que una dada</input>");
-        out.println("<br></br>");
-        out.println("<input type = 'submit' class = 'buttonSubmit'></input>");
-        out.println("<input type = 'hidden' name = 'p' value = d4r18c392b></input>");
-        out.println("<input type = 'hidden' name = 'pfase' value = '11'></input>");	
-        out.println("</form>");
-        out.println("</body>");
-        out.println("<footer>");
-        out.println("<p>sint48. @Diego R&iacute;os Castro.</p>");                
-        out.println("</footer>");
-        out.println("</html>");
-    }//doHtmlF01
-
-    public void doXmlF01(HttpServletResponse res)throws IOException
-    {
-        res.setContentType("text/xml");
-        PrintWriter out = res.getWriter();        
-        out.println("<?xml version='1.0' encoding='utf-8' ?>");
-        out.println("<service>");
-        out.println("<status>OK</status>");
-        out.println("</service>");
-    }//doXmlF01*/
+     
 
     /*public void doGetFase02(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res)throws IOException
     {        
@@ -371,21 +336,26 @@ public class Sint48P3 extends HttpServlet
         out.println("</errores>");
     }//doXmlF02*/
 
-    /*public void doGetFase11(HttpServletResponse res, String auto)throws IOException
+    public void doGetFase11(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res, GC1Anios ga)throws IOException, ServletException
     {
-
-        Anios.clear();        
-        Anios = getC1Anios();
-        Collections.sort(Anios);
+        ga.setAnio(mapDocs);
+        req.setAttribute("aniBean",ga);
+        //Anios.clear();        
+        //Anios = getC1Anios();
+        //Collections.sort(Anios);
         if(auto==null)
         {
-            doHtmlF11(res,Anios);  //Esto debe ser una jsp              
+            RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF11.jsp"); //habia sc.
+            rd.forward(req,res);
+            //doHtmlF11(res,Anios);  //Esto debe ser una jsp              
         }
         else if(auto.equals("si"))
         {
-            doXmlF11(res,Anios); //Esto debe ser otra jsp
+            RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF11.jsp"); //habia sc.
+            rd.forward(req,res);
+            //doXmlF11(res,Anios); //Esto debe ser otra jsp
         }        
-    }//doGetFase11*/
+    }//doGetFase11
 
     /*public void doGetFase12(HttpServletResponse res, String auto, String anio)throws IOException
     {
@@ -1035,21 +1005,21 @@ public class Sint48P3 extends HttpServlet
         out.println("</songs>");                
     }//doXmlF14*/
 
-    public void doXmlNop(HttpServletResponse res)throws IOException
+    /*public void doXmlNop(HttpServletResponse res)throws IOException
     {
         res.setContentType("text/xml");
         PrintWriter out = res.getWriter();
         out.println("<?xml version='1.0' encoding='utf-8' ?>");
         out.println("<wrongRequest>no passwd</wrongRequest>");        
-    }//doXmlNop
+    }//doXmlNop*/
 
-    public void doXmlIp(HttpServletResponse res)throws IOException
+    /*public void doXmlIp(HttpServletResponse res)throws IOException
     {
         res.setContentType("text/xml");
         PrintWriter out = res.getWriter();
         out.println("<?xml version='1.0' encoding='utf-8' ?>");
         out.println("<wrongRequest>bad passwd</wrongRequest>");        
-    }//doXmlIp
+    }//doXmlIp*/
 //}//Fin SINT48P2
 
 //-----------------------------------------------------------------ERROR CLASS-----------------------------------------------------------------------
