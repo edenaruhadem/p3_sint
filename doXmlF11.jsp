@@ -1,9 +1,8 @@
 <%@page contentType="text/xml"%>
 <%@page pageEncoding="UTF-8"%>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <anios>
-for(int i=0; i<Anios.size();i++)
-{
-    out.println("<anio>"+Anios.get(i)+"</anio>");
-}
+<c:forEach var = "i" items = "${aniBean.anio}" begin = "0" end = "3">
+<anio>${i}</anio>
+</c:forEach>
 </anios>

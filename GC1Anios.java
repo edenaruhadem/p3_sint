@@ -14,27 +14,22 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 public class GC1Anios
-{  
-    
-    private ArrayList<String>anio = new ArrayList<String>();
-    //private String an;
+{   
+    private ArrayList<String>anio = new ArrayList<String>();  
     
     public GC1Anios(){}
 
-    public void setAnio(HashMap<String,Document> mapDocs /*String a*/)
+    public void setAnio(HashMap<String,Document> mapDocs)
     {
         anio.clear();
         for(String key:mapDocs.keySet())
         {
             anio.add(key);
         }
-        Collections.sort(anio);
-        //anio = a;
-    }
-    public ArrayList<String> getAnio() //ArrayList<String>
+        Collections.sort(anio);        
+    }        
+    public ArrayList<String> getAnio()
     {
-        //an = anio.get(2);
-
         return (anio);
-    }
+    }    
 }

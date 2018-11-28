@@ -16,37 +16,18 @@
         <input type = 'hidden' name = 'pfase' value = '12'></input>
 
         <c:forEach var = "i" items = "${aniBean.anio}" begin = "0" end = "3">
-        <c:out value = "${i}"/><p>
+        <input type = 'radio' name = 'panio' value = "${i}">(poner num).- ${i}</input><p>
         </c:forEach>
-        <!--<p><input type = 'radio' name = 'panio' value = "+Anios.get(i)+" checked>"+Integer.toString(i+1)+".- "+Anios.get(i)+"</input></p>-->
-        <!--${aniBean.anio}-->
-        <!-- aqui meter la referencia de años. leerlos de la bean que los genera-->
-
-
-
-
         <br></br>
         <input type = 'submit' class = 'buttonSubmit'></input>            
         </form>
-        <button type = 'button' class = 'buttonAtras' onclick=\"window.location='/sint48/P2IM?p=d4r18c392b&pfase=01'\">Atr&aacute;s</button>
-
+        <form>        
+        <button type = 'submit' class = 'buttonAtras'>Atr&aacute;s</button>        
+        <input type = 'hidden' name = 'p' value = 'd4r18c392b'></input>
+        <input type = 'hidden' name = 'pfase' value = '01'></input>
+        </form>
     </body>
     <footer>
     <p>sint48. @Diego R&iacute;os Castro.</p>                
     </footer>
-</html>
-
-
-        
-        
-	            
-        for(int i=0;i<Anios.size();i++)
-        {
-            if(i==0)
-            {
-                out.println("<p><input type = 'radio' name = 'panio' value = "+Anios.get(i)+" checked>"+Integer.toString(i+1)+".- "+Anios.get(i)+"</input></p>");
-            }
-            else out.println("<p><input type = 'radio' name = 'panio' value = "+Anios.get(i)+">"+Integer.toString(i+1)+".- "+Anios.get(i)+"</input></p>");            
-        }       
-        
-        
+</html>       
