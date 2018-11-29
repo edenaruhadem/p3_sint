@@ -35,6 +35,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import Xbean.GC1Anios;
 import Xbean.GC1Discos;
+import Xbean.GC1Errores;
 import Xbean.GC1Resultado;
 import Xbean.GC1Canciones;
 
@@ -56,6 +57,7 @@ public class Sint48P3 extends HttpServlet
     GC1Discos gd; //Objeto java bean discos
     GC1Canciones gc;
     GC1Resultado gr;
+    GC1Errores ge;
 	//Declaración de estructuras de datos
     public static HashMap<String,Document> mapDocs = new HashMap<String,Document>();
     public static LinkedList<String> listaFicheros = new LinkedList<String>();    
@@ -75,7 +77,8 @@ public class Sint48P3 extends HttpServlet
         ServletContext context = config.getServletContext();        
         File f= new File(context.getRealPath("iml.xsd"));
         String dir = f.getAbsolutePath();        
-        String MY_SCHEMA = dir;      
+        String MY_SCHEMA = dir;
+        ge = new GC1Errores();      
 	//----------------Aquí hay que leer los ficheros. Eliminar erróneos para el procesado posterior-------------    	
 	//Creada batería de parsers
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -113,9 +116,9 @@ public class Sint48P3 extends HttpServlet
         }catch(SAXException e)
         {            
             e.printStackTrace();
-            mensajeError = "Fatal Error: "+e.toString();
-            System.out.println("Fatal Error: "+e.toString()); 
-            EFatales.put(url,mensajeError);
+            /*mensajeError = "Fatal Error: "+e.toString();
+            System.out.println("Fatal Error: "+e.toString());*/ 
+            ge.setErroresf(e,url);
             error = true;                    
         }catch(IOException ioe)
         {
@@ -138,10 +141,10 @@ public class Sint48P3 extends HttpServlet
                 }catch(SAXException e)
                 {                    
                     e.printStackTrace();
-                    mensajeError = "Fatal Error: "+e.toString();
-                    System.out.println("Fatal Error: "+e.toString()); 
-                    EFatales.put(url,mensajeError);                   
-                    error = true;                                       
+                    /*mensajeError = "Fatal Error: "+e.toString();
+                    System.out.println("Fatal Error: "+e.toString());*/ 
+                    ge.setErroresf(e,url);
+                    error = true;                                      
                 }catch(IOException ioe)
                 {                    
                     ioe.printStackTrace();
@@ -198,7 +201,7 @@ public class Sint48P3 extends HttpServlet
 		        switch(fase)
                 {                        
                     //case "01": doGetFase01(auto,sc,req,res); break;
-                    //case "02": doGetFase02(auto,sc,req,res); break;
+                    case "02": doGetFase02(auto,sc,req,res); break;
                     case "11": doGetFase11(auto,sc,req,res,ga); break;
                     case "12": doGetFase12(auto,sc,req,res,anio,gd); break;
                     case "13": doGetFase13(auto,sc,req,res,anio,idd,gc); break;
@@ -242,103 +245,20 @@ public class Sint48P3 extends HttpServlet
     }//doHtmlF01
      
 
-    /*public void doGetFase02(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res)throws IOException
-    {        
+    public void doGetFase02(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res)throws IOException, ServletException
+    {
+        req.setAttribute("errBean",ge);        
         if(auto==null)
         {
             RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF02.jsp");
-            rd.forward(req,res);
-            //doHtmlF02(res);                
+            rd.forward(req,res);                            
         }
         else if(auto.equals("si"))
         {
             RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF02.jsp");
-            rd.forward(req,res);
-            //doXmlF02(res);
+            rd.forward(req,res);            
         }         
-    }//doGetFase02*/
-
-    /*public void doHtmlF02(HttpServletResponse res)throws IOException
-    {	               
-        PrintWriter out = res.getWriter();
-        out.println("<html>");
-        out.println("<head>");    
-        out.println("<meta charset='utf-8'></meta>");
-        out.println("<title>Sint: Pr&aacute;ctica 2. Consulta de canciones</title>");
-	    out.println("<link rel='stylesheet' type='text/css' href='iml.css'></link>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Servicio de consulta de canciones</h1>");	    
-        out.println("<h2>Se han encontrado "+Warnings.size()+" ficheros con warnings.</h2>");
-        Iterator it = Warnings.keySet().iterator();
-        while(it.hasNext())
-        {
-            String key = (String)it.next();
-            out.println("<p>"+key+"--------"+Warnings.get(key)+"</p>");
-        }               	
-        out.println("<h2>Se han encontrado "+Errores.size()+" ficheros con errores</h2>");
-        it = Errores.keySet().iterator();
-        while(it.hasNext())
-        {
-            String key = (String)it.next();
-            out.println("<p>"+key+"--------"+Errores.get(key)+"</p>");
-        }              	              
-        out.println("<h2>Se han encontrado "+EFatales.size()+" ficheros con errores fatales</h2>");
-        it = EFatales.keySet().iterator();
-        while(it.hasNext())
-        {
-            String key = (String)it.next();
-            out.println("<p>"+key+"--------"+EFatales.get(key)+"</p>");
-        }               	              
-        out.println("<button class = 'buttonAtras'onclick=\"window.location='/sint48/P2IM?p=d4r18c392b&pfase=01'\">Atr&aacute;s</button>");
-        out.println("</body>");
-        out.println("<footer>");
-        out.println("<p>sint48. @Diego R&iacute;os Castro.</p>");                
-        out.println("</footer>");
-        out.println("</html>");
-    }//doHtmlF02*/
-
-    /*public void doXmlF02(HttpServletResponse res)throws IOException
-    {    
-        res.setContentType("text/xml");
-        PrintWriter out = res.getWriter();
-        out.println("<?xml version='1.0' encoding='utf-8' ?>");
-        out.println("<errores>");
-        out.println("<warnings>");
-        Iterator it = Warnings.keySet().iterator();
-        while(it.hasNext())
-        {
-            String key = (String)it.next();
-            out.println("<warning>");        
-            out.println("<file>"+key+"</file>");
-            out.println("<cause>"+Warnings.get(key)+"</cause>");
-            out.println("</warning>");
-        }           
-        out.println("</warnings>");
-        out.println("<errors>");
-        it = Errores.keySet().iterator();
-        while(it.hasNext())
-        {
-            String key = (String)it.next();
-            out.println("<error>");
-            out.println("<file>"+key+"</file>");
-            out.println("<cause>"+Errores.get(key)+"</cause>");
-            out.println("</error>");
-        }               
-        out.println("</errors>");
-        out.println("<fatalerrors>");
-        it = EFatales.keySet().iterator();
-        while(it.hasNext())
-        {
-            String key = (String)it.next();
-            out.println("<fatalerror>");
-            out.println("<file>"+key+"</file>");
-            out.println("<cause>"+EFatales.get(key)+"</cause>");
-            out.println("</fatalerror>");
-        }              
-        out.println("</fatalerrors>");
-        out.println("</errores>");
-    }//doXmlF02*/
+    }//doGetFase02    
 
     public void doGetFase11(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res, GC1Anios ga)throws IOException, ServletException
     {
@@ -461,18 +381,21 @@ class ErrorHandler extends DefaultHandler
     public void warning (SAXParseException spe) throws SAXException 
     {        
         error = true;
+        ge.setWarnings(spe,url);
         //fe.setWar(spe,url);       
     }
 
     public void error (SAXParseException spe) throws SAXException 
     {         
         error = true;
+        ge.setErrores(spe,url);
         //fe.setErr(spe,url);       
     }
 
     public void fatalerror (SAXParseException spe) throws SAXException 
     {        
         error = true;
+        ge.setErroresf(spe,url);
         //fe.setFE(spe,url);       
     }    
 }//Fin error handler

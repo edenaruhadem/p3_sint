@@ -10,7 +10,7 @@
         <h1>Servicio de consulta de canciones</h1>
         <h2>Bienvenido a este servicio.</h2>
         <form name = 'miformfase01' action=''>
-        <a href = '/sint48/P2IM?p=d4r18c392b&pfase=02'>Pulsa aqu&iacute; para ver los ficheros err&oacute;neos</a>
+        <a href = '/sint481/P3M?p=d4r18c392b&pfase=02'>Pulsa aqu&iacute; para ver los ficheros err&oacute;neos</a>
         <h3>Selecciona una consulta:</h3>
         <input type = 'radio' checked>Consulta1: Canciones de un int&eacute;rprete que duran menos que una dada</input>
         <br></br>
