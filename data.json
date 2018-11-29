@@ -1,0 +1,17 @@
+[
+    {
+        "name":"Meowsy",
+        "species":"cat",
+        "food":"fish"
+    },
+    {
+        "name":"Toby",
+        "species":"dog",
+        "food":"meat"
+    },
+    {
+        "name":"rednose",
+        "species":"rabbit",
+        "food":"carrots"
+    }
+]
