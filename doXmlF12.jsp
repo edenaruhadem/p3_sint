@@ -4,7 +4,7 @@
 <%@page import="clases.Disco"%>
 
 <discos>
-<c:forEach var = "i" items = "${disBean.disco}" begin = "0" end = "3">
+<c:forEach var = "i" items = "${disBean.disco}">
 <disco idd='${i.getIDD(i)}' interprete='${i.getInterprete(i)}' langs='${i.getIdiomas(i)}'>${i.getTitulo(i)}</disco>
 </c:forEach>
 </discos>        

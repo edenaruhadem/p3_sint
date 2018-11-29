@@ -6,7 +6,7 @@
 
 <errores>
 <warnings>
-<c:forEach var = "i" items = "${errBean.warnings}" begin = "0" end = "1">
+<c:forEach var = "i" items = "${errBean.warnings}">
 <warning>
 <file>${i.getKey()}</file>
 <cause>${i.getValue()}</cause>
@@ -14,7 +14,7 @@
 </c:forEach>
 </warnings>
 <errors>
-<c:forEach var = "i" items = "${errBean.errores}" begin = "0" end = "10">
+<c:forEach var = "i" items = "${errBean.errores}">
 <error>
 <file>${i.getKey()}</file>
 <cause>${i.getValue()}</cause>
@@ -22,7 +22,7 @@
 </c:forEach>
 </errors>
 <fatalerrors>
-<c:forEach var = "i" items = "${errBean.erroresf}" begin = "0" end = "1">
+<c:forEach var = "i" items = "${errBean.erroresf}">
 <fatalerror>
 <file>${i.getKey()}</file>
 <cause>${i.getValue()}</cause>

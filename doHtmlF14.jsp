@@ -13,7 +13,7 @@
         <form name = 'miformfase14'>
         <h2>Consulta 1: A&ntilde;o=${resBean.an}, Disco=${resBean.id}, Canci&oacute;n=${resBean.ic}</h2>    
         <h3>Este es el resultado:</h3>       
-        <c:forEach var = "i" items = "${resBean.resultado}" begin = "0" end = "3">       
+        <c:forEach var = "i" items = "${resBean.resultado}">       
         (poner num).- T&iacute;tulo = '${i.getTitulo(i)}' --- Descripci&oacute;n = '${i.getDescripcion(i)}' --- Premios = '${i.getPremios(i)}'<p>
         </c:forEach>                   
         </form>

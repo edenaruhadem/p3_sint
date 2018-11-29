@@ -11,17 +11,17 @@
     <body>
         <h1>Servicio de consulta de canciones</h1>
         <h2>Se han encontrado (meter num) ficheros con warnings.</h2>       
-        <c:forEach var = "i" items = "${errBean.warnings}" begin = "0" end = "1">
+        <c:forEach var = "i" items = "${errBean.warnings}">
         ${i.getKey()} -------- ${i.getValue()}<p>
         </c:forEach>
 
         <h2>Se han encontrado (meter num) ficheros con errores.</h2>       
-        <c:forEach var = "i" items = "${errBean.errores}" begin = "0" end = "10">
+        <c:forEach var = "i" items = "${errBean.errores}">
         ${i.getKey()} -------- ${i.getValue()}<p>
         </c:forEach>
 
         <h2>Se han encontrado (meter num) ficheros con errores fatales.</h2>       
-        <c:forEach var = "i" items = "${errBean.erroresf}" begin = "0" end = "1">
+        <c:forEach var = "i" items = "${errBean.erroresf}">
         ${i.getKey()} -------- ${i.getValue()}<p>
         </c:forEach>
         <form>

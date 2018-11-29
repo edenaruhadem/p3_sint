@@ -4,7 +4,7 @@
 <%@page import="clases.Cancion"%>
 
 <songs>
-<c:forEach var = "i" items = "${resBean.resultado}" begin = "0" end = "3">
+<c:forEach var = "i" items = "${resBean.resultado}">
 <song descripcion='${i.getDescripcion(i)}' premios='${i.getPremios(i)}'>${i.getTitulo(i)}</song>
 </c:forEach>
 </songs>        

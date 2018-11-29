@@ -18,7 +18,7 @@
         <input type = 'hidden' name = 'pfase' value = '13'></input>
         <input type = 'hidden' name = 'panio' value ="${disBean.an}"></input>                
         
-        <c:forEach var = "i" items = "${disBean.disco}" begin = "0" end = "3">
+        <c:forEach var = "i" items = "${disBean.disco}">
         <input type = 'radio' name = 'pidd' value = "${i.getIDD(i)}">(poner num).- T&iacute;tulo ='${i.getTitulo(i)}' --- IDD ='${i.getIDD(i)}' --- Int&eacute;rprete ='${i.getInterprete(i)}' --- Idiomas ='${i.getIdiomas(i)}'</input><p>
         </c:forEach>       
         <br></br>

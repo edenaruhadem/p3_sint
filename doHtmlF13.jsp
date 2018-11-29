@@ -19,7 +19,7 @@
         <input type = 'hidden' name = 'pidd' value = "${canBean.id}"></input>
                         
         
-        <c:forEach var = "i" items = "${canBean.cancion}" begin = "0" end = "3">        
+        <c:forEach var = "i" items = "${canBean.cancion}">        
         <input type = 'radio' name = 'pidc' value = "${i.getIdc(i)}">(poner num).- T&iacute;tulo ='${i.getTitulo(i)}' --- IDC ='${i.getIdc(i)}' --- G&eacute;nero ='${i.getGenero(i)}' --- Duraci&oacute;n ='${i.getDuracion(i)} seg.'</input><p>
         </c:forEach>       
         <br></br>

@@ -15,7 +15,7 @@
         <input type = 'hidden' name = 'p' value = 'd4r18c392b'></input>    
         <input type = 'hidden' name = 'pfase' value = '12'></input>
 
-        <c:forEach var = "i" items = "${aniBean.anio}" begin = "0" end = "3">
+        <c:forEach var = "i" items = "${aniBean.anio}">
         <input type = 'radio' name = 'panio' value = "${i}">(poner num).- ${i}</input><p>
         </c:forEach>
         <br></br>
