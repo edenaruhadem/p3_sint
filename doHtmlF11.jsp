@@ -18,7 +18,14 @@
         <input type = 'hidden' name = 'pfase' value = '12'></input>
 
         <c:forEach var = "i" items = "${aniBean.hanio}">
+        <c:choose>
+        <c:when test="${(i.getKey()) == 1}">
+        <input type = 'radio' name = 'panio' value = "${i.getValue()}"checked>${i.getKey()}.- ${i.getValue()}</input><p>
+        </c:when>
+        <c:otherwise> 
         <input type = 'radio' name = 'panio' value = "${i.getValue()}">${i.getKey()}.- ${i.getValue()}</input><p>
+        </c:otherwise>
+        </c:choose>
         </c:forEach>
         <br></br>
         <input type = 'submit' class = 'buttonSubmit'></input>            

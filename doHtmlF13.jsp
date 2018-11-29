@@ -21,8 +21,15 @@
         <input type = 'hidden' name = 'pidd' value = "${canBean.id}"></input>
                         
         
-        <c:forEach var = "i" items = "${canBean.hcancion}">        
+        <c:forEach var = "i" items = "${canBean.hcancion}">
+        <c:choose>
+        <c:when test="${(i.getKey()) == 1}">       
+        <input type = 'radio' name = 'pidc' value = "${(i.getValue()).getIdc((i.getValue()))}"checked>${i.getKey()}.- T&iacute;tulo ='${(i.getValue()).getTitulo((i.getValue()))}' --- IDC ='${(i.getValue()).getIdc((i.getValue()))}' --- G&eacute;nero ='${(i.getValue()).getGenero((i.getValue()))}' --- Duraci&oacute;n ='${(i.getValue()).getDuracion((i.getValue()))} seg.'</input><p>
+        </c:when>
+        <c:otherwise>
         <input type = 'radio' name = 'pidc' value = "${(i.getValue()).getIdc((i.getValue()))}">${i.getKey()}.- T&iacute;tulo ='${(i.getValue()).getTitulo((i.getValue()))}' --- IDC ='${(i.getValue()).getIdc((i.getValue()))}' --- G&eacute;nero ='${(i.getValue()).getGenero((i.getValue()))}' --- Duraci&oacute;n ='${(i.getValue()).getDuracion((i.getValue()))} seg.'</input><p>
+        </c:otherwise>
+        </c:choose> 
         </c:forEach>       
         <br></br>
         <input type = 'submit' class = 'buttonSubmit'></input>            

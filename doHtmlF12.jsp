@@ -20,8 +20,15 @@
         <input type = 'hidden' name = 'pfase' value = '13'></input>
         <input type = 'hidden' name = 'panio' value ="${disBean.an}"></input>                
         
-        <c:forEach var = "i" items = "${disBean.hdisco}">            
-        <input type = 'radio' name = 'pidd' value = "${(i.getValue()).getIDD((i.getValue()))}">${i.getKey()}.- T&iacute;tulo ='${(i.getValue()).getTitulo((i.getValue()))}' --- IDD ='${(i.getValue()).getIDD((i.getValue()))}' --- Int&eacute;rprete ='${(i.getValue()).getInterprete((i.getValue()))}' --- Idiomas ='${(i.getValue()).getIdiomas((i.getValue()))}'</input><p>            
+        <c:forEach var = "i" items = "${disBean.hdisco}">
+        <c:choose>
+        <c:when test="${(i.getKey())==1}">        
+        <input type = 'radio' name = 'pidd' value = "${(i.getValue()).getIDD((i.getValue()))}"checked>${i.getKey()}.- T&iacute;tulo ='${(i.getValue()).getTitulo((i.getValue()))}' --- IDD ='${(i.getValue()).getIDD((i.getValue()))}' --- Int&eacute;rprete ='${(i.getValue()).getInterprete((i.getValue()))}' --- Idiomas ='${(i.getValue()).getIdiomas((i.getValue()))}'</input><p>            
+        </c:when>
+        <c:otherwise>
+        <input type = 'radio' name = 'pidd' value = "${(i.getValue()).getIDD((i.getValue()))}">${i.getKey()}.- T&iacute;tulo ='${(i.getValue()).getTitulo((i.getValue()))}' --- IDD ='${(i.getValue()).getIDD((i.getValue()))}' --- Int&eacute;rprete ='${(i.getValue()).getInterprete((i.getValue()))}' --- Idiomas ='${(i.getValue()).getIdiomas((i.getValue()))}'</input><p>
+        </c:otherwise>    
+        </c:choose>  
         </c:forEach>       
         <br></br>
         <input type = 'submit' class = 'buttonSubmit'></input>            
