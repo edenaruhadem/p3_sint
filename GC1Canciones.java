@@ -20,15 +20,17 @@ import clases.Cancion;
 
 public class GC1Canciones
 {   
-    private ArrayList<Cancion>cancion = new ArrayList<Cancion>();    
+    private HashMap<String,Cancion>hcancion = new HashMap<String,Cancion>();
+    //private ArrayList<Cancion>cancion = new ArrayList<Cancion>();    
     private String an;
     private String id;  
     
     public GC1Canciones(){}
 
-    public void setCancion(HashMap<String,Document> mapDocs, String anio, String idd)
+    public void setHcancion(HashMap<String,Document> mapDocs, String anio, String idd)
     {
-        cancion.clear();
+        ArrayList<Cancion>cancion = new ArrayList<Cancion>(); 
+        hcancion.clear();
         Document res = null;
         String atributoUno = null;
         String atributoDos = null;
@@ -94,6 +96,11 @@ public class GC1Canciones
                     cancion.add(obj);
                 }
             }           
+        }
+        for (int i =0;i<cancion.size();i++)
+        {
+            String index = Integer.toString(i+1);
+            hcancion.put(index,cancion.get(i));
         }            
     }
 
@@ -106,9 +113,9 @@ public class GC1Canciones
         id = idd;
     }
 
-    public ArrayList<Cancion> getCancion()
+    public HashMap<String,Cancion> getHcancion()
     {
-        return(cancion);
+        return(hcancion);
     }
 
     public String getAn()

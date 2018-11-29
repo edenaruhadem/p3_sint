@@ -2,6 +2,8 @@
 <%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page import="clases.Cancion"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 
 <html>
     <head>        
@@ -13,8 +15,8 @@
         <form name = 'miformfase14'>
         <h2>Consulta 1: A&ntilde;o=${resBean.an}, Disco=${resBean.id}, Canci&oacute;n=${resBean.ic}</h2>    
         <h3>Este es el resultado:</h3>       
-        <c:forEach var = "i" items = "${resBean.resultado}">       
-        (poner num).- T&iacute;tulo = '${i.getTitulo(i)}' --- Descripci&oacute;n = '${i.getDescripcion(i)}' --- Premios = '${i.getPremios(i)}'<p>
+        <c:forEach var = "i" items = "${resBean.hresultado}">       
+        ${i.getKey()}.- T&iacute;tulo = '${(i.getValue()).getTitulo((i.getValue()))}' --- Descripci&oacute;n = '${(i.getValue()).getDescripcion((i.getValue()))}' --- Premios = '${(i.getValue()).getPremios((i.getValue()))}'<p>
         </c:forEach>                   
         </form>
         <form>        

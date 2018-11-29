@@ -262,7 +262,8 @@ public class Sint48P3 extends HttpServlet
 
     public void doGetFase11(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res, GC1Anios ga)throws IOException, ServletException
     {
-        ga.setAnio(mapDocs);
+        ga.setHanio(mapDocs);
+        //ga.setTam();
         req.setAttribute("aniBean",ga);        
         if(auto==null)
         {
@@ -286,7 +287,7 @@ public class Sint48P3 extends HttpServlet
         }
         else
         {
-            gd.setDisco(mapDocs,anio);
+            gd.setHdisco(mapDocs,anio);
             gd.setAn(anio);
             req.setAttribute("disBean",gd);            
             if(auto==null)
@@ -316,7 +317,7 @@ public class Sint48P3 extends HttpServlet
         }
         else
         {
-            gc.setCancion(mapDocs,anio,idd);
+            gc.setHcancion(mapDocs,anio,idd);
             gc.setAn(anio);
             gc.setId(idd);
             req.setAttribute("canBean",gc);                    
@@ -353,7 +354,7 @@ public class Sint48P3 extends HttpServlet
         }
         else
         {
-            gr.setResultado(mapDocs,anio,idd,idc);
+            gr.setHresultado(mapDocs,anio,idd,idc);
             gr.setAn(anio);
             gr.setId(idd);
             gr.setIc(idc);

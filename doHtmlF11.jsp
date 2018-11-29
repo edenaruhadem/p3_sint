@@ -1,6 +1,8 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 
 <html>
     <head>        
@@ -15,8 +17,8 @@
         <input type = 'hidden' name = 'p' value = 'd4r18c392b'></input>    
         <input type = 'hidden' name = 'pfase' value = '12'></input>
 
-        <c:forEach var = "i" items = "${aniBean.anio}">
-        <input type = 'radio' name = 'panio' value = "${i}">(poner num).- ${i}</input><p>
+        <c:forEach var = "i" items = "${aniBean.hanio}">
+        <input type = 'radio' name = 'panio' value = "${i.getValue()}">${i.getKey()}.- ${i.getValue()}</input><p>
         </c:forEach>
         <br></br>
         <input type = 'submit' class = 'buttonSubmit'></input>            

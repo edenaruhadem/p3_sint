@@ -1,6 +1,8 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 <%@page import="clases.Disco"%>
 
 <html>
@@ -18,8 +20,8 @@
         <input type = 'hidden' name = 'pfase' value = '13'></input>
         <input type = 'hidden' name = 'panio' value ="${disBean.an}"></input>                
         
-        <c:forEach var = "i" items = "${disBean.disco}">
-        <input type = 'radio' name = 'pidd' value = "${i.getIDD(i)}">(poner num).- T&iacute;tulo ='${i.getTitulo(i)}' --- IDD ='${i.getIDD(i)}' --- Int&eacute;rprete ='${i.getInterprete(i)}' --- Idiomas ='${i.getIdiomas(i)}'</input><p>
+        <c:forEach var = "i" items = "${disBean.hdisco}">            
+        <input type = 'radio' name = 'pidd' value = "${(i.getValue()).getIDD((i.getValue()))}">${i.getKey()}.- T&iacute;tulo ='${(i.getValue()).getTitulo((i.getValue()))}' --- IDD ='${(i.getValue()).getIDD((i.getValue()))}' --- Int&eacute;rprete ='${(i.getValue()).getInterprete((i.getValue()))}' --- Idiomas ='${(i.getValue()).getIdiomas((i.getValue()))}'</input><p>            
         </c:forEach>       
         <br></br>
         <input type = 'submit' class = 'buttonSubmit'></input>            

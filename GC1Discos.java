@@ -20,13 +20,14 @@ import clases.Disco;
 
 public class GC1Discos
 {   
-    private ArrayList<Disco>disco = new ArrayList<Disco>();
+    //private ArrayList<Disco>disco = new ArrayList<Disco>();
+    private HashMap<String,Disco>hdisco = new HashMap<String,Disco>();
     //private ArrayList<String>ls = new ArrayList<String>();
     private String an;  
     
     public GC1Discos(){}
 
-    public void setDisco(HashMap<String,Document> mapDocs, String anio)
+    public void setHdisco(HashMap<String,Document> mapDocs, String anio)
     {
         Document res = null;
         String atributoUno = null;
@@ -36,8 +37,9 @@ public class GC1Discos
         String idiomaPais = null;
         Integer resComp = 0;
         Integer resCompMem = 0;
+        ArrayList<Disco>disco = new ArrayList<Disco>();
         ArrayList<String> interpretes = new ArrayList<String>();
-        disco.clear();                
+        hdisco.clear();                
         for (String key:mapDocs.keySet())
         {
             if(anio.equals(key))
@@ -105,6 +107,11 @@ public class GC1Discos
                     disco.add(obj);
                 }
             }           
+        }
+        for(int i = 0; i< disco.size();i++)
+        {
+            String index = Integer.toString(i+1);
+            hdisco.put(index,disco.get(i));
         }      
     }
     public void setAn(String anio)
@@ -112,9 +119,9 @@ public class GC1Discos
         an = anio;
     }
 
-    public ArrayList<Disco> getDisco()
+    public HashMap<String,Disco> getHdisco()
     {
-        return (disco);
+        return (hdisco);
     }
 
     public String getAn()

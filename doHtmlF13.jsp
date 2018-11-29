@@ -2,6 +2,8 @@
 <%@page pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page import="clases.Cancion"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 
 <html>
     <head>        
@@ -19,8 +21,8 @@
         <input type = 'hidden' name = 'pidd' value = "${canBean.id}"></input>
                         
         
-        <c:forEach var = "i" items = "${canBean.cancion}">        
-        <input type = 'radio' name = 'pidc' value = "${i.getIdc(i)}">(poner num).- T&iacute;tulo ='${i.getTitulo(i)}' --- IDC ='${i.getIdc(i)}' --- G&eacute;nero ='${i.getGenero(i)}' --- Duraci&oacute;n ='${i.getDuracion(i)} seg.'</input><p>
+        <c:forEach var = "i" items = "${canBean.hcancion}">        
+        <input type = 'radio' name = 'pidc' value = "${(i.getValue()).getIdc((i.getValue()))}">${i.getKey()}.- T&iacute;tulo ='${(i.getValue()).getTitulo((i.getValue()))}' --- IDC ='${(i.getValue()).getIdc((i.getValue()))}' --- G&eacute;nero ='${(i.getValue()).getGenero((i.getValue()))}' --- Duraci&oacute;n ='${(i.getValue()).getDuracion((i.getValue()))} seg.'</input><p>
         </c:forEach>       
         <br></br>
         <input type = 'submit' class = 'buttonSubmit'></input>            

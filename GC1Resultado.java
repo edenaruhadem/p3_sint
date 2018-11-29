@@ -20,16 +20,17 @@ import clases.Cancion;
 
 public class GC1Resultado
 {   
-    private ArrayList<Cancion>resultado = new ArrayList<Cancion>();    
+    private HashMap<String,Cancion>hresultado = new HashMap<String,Cancion>();    
     private String an;
     private String id;
     private String ic;  
     
     public GC1Resultado(){}
 
-    public void setResultado(HashMap<String,Document> mapDocs, String anio, String idd, String idc)
+    public void setHresultado(HashMap<String,Document> mapDocs, String anio, String idd, String idc)
     {
-        resultado.clear();
+        hresultado.clear();
+        ArrayList<Cancion>resultado = new ArrayList<Cancion>();
         String dur = null;
         String interprete = null;
         String atributoUno = null;
@@ -209,6 +210,11 @@ public class GC1Resultado
                     resultado.add(obj);
                 }
             }           
+        }
+        for(int i = 0;i<resultado.size();i++)
+        {
+            String index = Integer.toString(i+1);
+            hresultado.put(index,resultado.get(i));
         }                          
     }
 
@@ -225,9 +231,9 @@ public class GC1Resultado
         ic = idc;
     }
 
-    public ArrayList<Cancion> getResultado()
+    public HashMap<String,Cancion> getHresultado()
     {
-        return(resultado);
+        return(hresultado);
     }
 
     public String getAn()
