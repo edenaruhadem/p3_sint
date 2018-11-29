@@ -119,6 +119,7 @@ public class Sint48P3 extends HttpServlet
             /*mensajeError = "Fatal Error: "+e.toString();
             System.out.println("Fatal Error: "+e.toString());*/ 
             ge.setErroresf(e,url);
+            ge.setTamfer();
             error = true;                    
         }catch(IOException ioe)
         {
@@ -144,6 +145,7 @@ public class Sint48P3 extends HttpServlet
                     /*mensajeError = "Fatal Error: "+e.toString();
                     System.out.println("Fatal Error: "+e.toString());*/ 
                     ge.setErroresf(e,url);
+                    ge.setTamfer();
                     error = true;                                      
                 }catch(IOException ioe)
                 {                    
@@ -383,6 +385,7 @@ class ErrorHandler extends DefaultHandler
     {        
         error = true;
         ge.setWarnings(spe,url);
+        ge.setTamwar();
         //fe.setWar(spe,url);       
     }
 
@@ -390,6 +393,7 @@ class ErrorHandler extends DefaultHandler
     {         
         error = true;
         ge.setErrores(spe,url);
+        ge.setTamerr();
         //fe.setErr(spe,url);       
     }
 
@@ -397,6 +401,7 @@ class ErrorHandler extends DefaultHandler
     {        
         error = true;
         ge.setErroresf(spe,url);
+        ge.setTamfer();
         //fe.setFE(spe,url);       
     }    
 }//Fin error handler
