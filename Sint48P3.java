@@ -360,10 +360,14 @@ public class Sint48P3 extends HttpServlet
         }
         else
         {
-            gj.setResultadojson(mapDocs, anio, idd, idc);
+            //boolean isAsc = true;            
+            gj.setResultadojsona(mapDocs, anio, idd, idc);
+            gj.setResultadojsond(mapDocs, anio, idd, idc);
             gj.setAn(anio);
             gj.setId(idd);
             gj.setIc(idc);
+            //isAsc = false;
+            //gj.setResultadojson(mapDocs, anio, idd, idc, isAsc);
             /*gr.setHresultado(mapDocs,anio,idd,idc);
             gr.setAn(anio);
             gr.setId(idd);

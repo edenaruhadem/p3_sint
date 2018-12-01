@@ -2,16 +2,13 @@ var infoContainer = document.getElementById("resultado");
 var btna = document.getElementById("btna");
 var btnd = document.getElementById("btnd");
 
-btna.addEventListener("click", function(){
-    //var ourData = "ascendente";
-    //renderHTML(ourData);
+btna.addEventListener("click", function(){             
     var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET','data.json'); //Para recibir. POST para enviar
+    ourRequest.open('GET','adata.json'); //Para recibir. POST para enviar
     ourRequest.onload = function(){
-        renderHTML(ourData);
-
         if(ourRequest.status >= 200 && ourRequest.status < 400){
             var ourData = JSON.parse(ourRequest.responseText);
+            deleteHTML();
             renderHTML(ourData);
         }else{
             console.log("We connected to the server but it performed an error")
@@ -22,15 +19,13 @@ btna.addEventListener("click", function(){
     }
     ourRequest.send();
 });
-btnd.addEventListener("click", function(){
-    //var ourData = "descendente";
-    //renderHTML(ourData);
+btnd.addEventListener("click", function(){                
     var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET','data.json'); //Para recibir. POST para enviar
+    ourRequest.open('GET','ddata.json'); //Para recibir. POST para enviar
     ourRequest.onload = function(){
-
         if(ourRequest.status >= 200 && ourRequest.status < 400){
             var ourData = JSON.parse(ourRequest.responseText);
+            deleteHTML();
             renderHTML(ourData);
         }else{
             console.log("We connected to the server but it performed an error")
@@ -43,12 +38,15 @@ btnd.addEventListener("click", function(){
 });
 
 function renderHTML(data){
-    var htmlString="";
+    var htmlString="";    
     for(i = 0;i<data.length;i++)
     {        
-        htmlString += "<p>"+ data[i].titulo +" --- "+ data[i].desc + " --- " + data[i].premios+".</p>";                
+        htmlString += "<p>"+ "Titulo = "+ data[i].titulo +" --- "+"Descripcion = "+ data[i].desc + " --- "+"Premios = " + data[i].premios+"</p>";                
     }
     infoContainer.insertAdjacentHTML('beforeend',htmlString);
     //infoContainer.insertAdjacentHTML('beforeend',data);
+}
+function deleteHTML(){    
+    infoContainer.innerHTML='';   
 }
 
