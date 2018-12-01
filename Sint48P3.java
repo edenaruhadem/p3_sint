@@ -37,6 +37,7 @@ import Xbean.GC1Anios;
 import Xbean.GC1Discos;
 import Xbean.GC1Errores;
 import Xbean.GC1Resultado;
+import Xbean.GC1Resultadojson;
 import Xbean.GC1Canciones;
 
 //import Xbean.FileError;
@@ -58,6 +59,7 @@ public class Sint48P3 extends HttpServlet
     GC1Canciones gc;
     GC1Resultado gr;
     GC1Errores ge;
+    GC1Resultadojson gj;
 	//Declaración de estructuras de datos
     public static HashMap<String,Document> mapDocs = new HashMap<String,Document>();
     public static LinkedList<String> listaFicheros = new LinkedList<String>();    
@@ -178,6 +180,7 @@ public class Sint48P3 extends HttpServlet
         gd = new GC1Discos();
         gc = new GC1Canciones();
         gr = new GC1Resultado();
+        gj = new GC1Resultadojson();
         //----------------------------- Objetos para las java beans ---------------------
         //fe = new GetFileError();             
         //req.setAttribute("anioBean",ga); //Esto para los años       
@@ -207,7 +210,8 @@ public class Sint48P3 extends HttpServlet
                     case "11": doGetFase11(auto,sc,req,res,ga); break;
                     case "12": doGetFase12(auto,sc,req,res,anio,gd); break;
                     case "13": doGetFase13(auto,sc,req,res,anio,idd,gc); break;
-                    case "14": doGetFase14(auto,sc,req,res,anio,idd,idc,gr); break;
+                    //case "14": doGetFase14(auto,sc,req,res,anio,idd,idc,gr); break;
+                    case "14": doGetFase14(auto,sc,req,res,anio,idd,idc,gj); break;
                 }
             }
 	    }        
@@ -337,7 +341,7 @@ public class Sint48P3 extends HttpServlet
         }               
     }//doGetFase13
 
-    public void doGetFase14(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res, String anio, String idd, String idc, GC1Resultado gr)throws IOException, ServletException
+    public void doGetFase14(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res, String anio, String idd, String idc, /*GC1Resultado gr,*/GC1Resultadojson gj)throws IOException, ServletException
     {           
         if(anio==null)
         {
@@ -356,14 +360,21 @@ public class Sint48P3 extends HttpServlet
         }
         else
         {
-            gr.setHresultado(mapDocs,anio,idd,idc);
+            gj.setResultadojson(mapDocs, anio, idd, idc);
+            gj.setAn(anio);
+            gj.setId(idd);
+            gj.setIc(idc);
+            /*gr.setHresultado(mapDocs,anio,idd,idc);
             gr.setAn(anio);
             gr.setId(idd);
             gr.setIc(idc);
-            req.setAttribute("resBean",gr);                       
+            req.setAttribute("resBean",gr);*/
+            req.setAttribute("resBean",gj);                       
             if(auto==null)
             {
-                RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF14.jsp");
+                /*RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF14.jsp");
+                rd.forward(req,res);*/
+                RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF14Json.jsp");
                 rd.forward(req,res);                               
             }
             else if(auto.equals("si"))
