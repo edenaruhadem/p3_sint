@@ -1,5 +1,8 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.ArrayList"%>
+
 
 <html>
     <head>        
@@ -16,7 +19,18 @@
         <br></br>
         <input type = 'submit' class = 'buttonSubmit'></input>
         <input type = 'hidden' name = 'p' value = d4r18c392b></input>
-        <input type = 'hidden' name = 'pfase' value = '11'></input>	
+        <input type = 'hidden' name = 'pfase' value = '11'></input>
+
+        </form>
+        <form name = 'miformfase03' action=''>        
+        <h3>Selecciona un archivo para tranformar:</h3>
+        <c:forEach var = "i" items = "${xsltBean.xslt}">       
+        <input type = 'radio' name = 'pxslt' value = "${i}">${i}</input><p>       
+        </c:forEach>
+        <br></br>
+        <input type = 'submit' class = 'buttonSubmit'></input>
+        <input type = 'hidden' name = 'p' value = d4r18c392b></input>
+        <input type = 'hidden' name = 'pfase' value = '03'></input>	
         </form>        
     </body>
     <footer>

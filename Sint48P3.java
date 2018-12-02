@@ -39,6 +39,7 @@ import Xbean.GC1Errores;
 import Xbean.GC1Resultado;
 import Xbean.GC1Resultadojson;
 import Xbean.GC1Canciones;
+import Xbean.GC1Xslt;
 
 //import Xbean.FileError;
 
@@ -60,8 +61,10 @@ public class Sint48P3 extends HttpServlet
     GC1Resultado gr;
     GC1Errores ge;
     GC1Resultadojson gj;
+    GC1Xslt gxslt;
 	//Declaración de estructuras de datos
     public static HashMap<String,Document> mapDocs = new HashMap<String,Document>();
+    public static ArrayList<String> urlDocs = new ArrayList<String>();    
     public static LinkedList<String> listaFicheros = new LinkedList<String>();    
     //public static ArrayList<String>fichErroneos = new ArrayList<String>();
     public Map<String,String>Errores= new HashMap<String,String>();
@@ -111,7 +114,7 @@ public class Sint48P3 extends HttpServlet
         {
             //listaFicheros.add(rutaXml+"iml2001.xml");
             //url = (String) listaFicheros.getFirst();
-            doc = db.parse(new URL(rutaXml+"iml2001.xml").openStream());
+            doc = db.parse(new URL(rutaXml+"iml2001.xml").openStream());           
             leidos.add(url);            
             buscaIml(doc, mapDocs);
             listaFicheros.removeFirst();
@@ -129,7 +132,8 @@ public class Sint48P3 extends HttpServlet
         }catch(Exception ee)
         {
             ee.printStackTrace();
-        }        
+        }
+        urlDocs.add((rutaXml+"iml2001.xml").substring(7));        
 	    while(!listaFicheros.isEmpty())
         {
             url = (String) listaFicheros.getFirst();        
@@ -139,7 +143,7 @@ public class Sint48P3 extends HttpServlet
                 {
                 //Generacion del arbol DOM tras el parseo. Generará un error el método parse si el documento no  es well-formed. Una SAXException
                 //Saltará la clase de gestión de errores en caso de que los contenga (no válido según el schema xml	definido).            
-                    doc = db.parse(new URL(url).openStream());
+                    doc = db.parse(new URL(url).openStream());                    
                     leidos.add(url);                    
                 }catch(SAXException e)
                 {                    
@@ -158,6 +162,7 @@ public class Sint48P3 extends HttpServlet
                 }                
                 if(!error)
                 {
+                    urlDocs.add(url.substring(7));
                     buscaIml(doc, mapDocs);
                 }
                 error = false;
@@ -170,7 +175,8 @@ public class Sint48P3 extends HttpServlet
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
     {       
         ServletContext sc = req.getServletContext();
-	    String p = req.getParameter("p");
+        String p = req.getParameter("p");
+        String fxslt = req.getParameter("pxslt");
         String fase = req.getParameter("pfase");
         String anio = req.getParameter("panio");
         String idd = req.getParameter("pidd");
@@ -181,6 +187,7 @@ public class Sint48P3 extends HttpServlet
         gc = new GC1Canciones();
         gr = new GC1Resultado();
         gj = new GC1Resultadojson();
+        gxslt = new GC1Xslt();
         //----------------------------- Objetos para las java beans ---------------------
         //fe = new GetFileError();             
         //req.setAttribute("anioBean",ga); //Esto para los años       
@@ -199,7 +206,7 @@ public class Sint48P3 extends HttpServlet
             String faseinicial = "01";
             if((fase==null) || (fase.equals(faseinicial)))
             {                
-                doGetFase01(auto,sc,req,res);
+                doGetFase01(auto,sc,req,res,urlDocs);
             }
             else
             {
@@ -233,8 +240,10 @@ public class Sint48P3 extends HttpServlet
         }        
     }
 
-    public void doGetFase01(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res)throws IOException, ServletException
+    public void doGetFase01(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res, ArrayList<String> urlDocs)throws IOException, ServletException
     {
+        gxslt.setXslt(urlDocs);
+        req.setAttribute("xsltBean",gxslt);
         //req.setAttribute("feBean",fe);
         if(auto==null)
         {
