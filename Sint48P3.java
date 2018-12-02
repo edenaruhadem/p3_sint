@@ -133,7 +133,7 @@ public class Sint48P3 extends HttpServlet
         {
             ee.printStackTrace();
         }
-        urlDocs.add((rutaXml+"iml2001.xml").substring(7));        
+        //urlDocs.add((rutaXml+"iml2001.xml").substring(7));        
 	    while(!listaFicheros.isEmpty())
         {
             url = (String) listaFicheros.getFirst();        
@@ -212,8 +212,9 @@ public class Sint48P3 extends HttpServlet
             {
 		        switch(fase)
                 {                        
-                    //case "01": doGetFase01(auto,sc,req,res); break;
+                    //case "01": doGetFase01(auto,sc,req,res); break;                    
                     case "02": doGetFase02(auto,sc,req,res); break;
+                    case "03": doGetFase03(sc,req,res);
                     case "11": doGetFase11(auto,sc,req,res,ga); break;
                     case "12": doGetFase12(auto,sc,req,res,anio,gd); break;
                     case "13": doGetFase13(auto,sc,req,res,anio,idd,gc); break;
@@ -273,7 +274,13 @@ public class Sint48P3 extends HttpServlet
             RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF02.jsp");
             rd.forward(req,res);            
         }         
-    }//doGetFase02    
+    }//doGetFase02
+    
+    public void doGetFase03(ServletContext sc, HttpServletRequest req, HttpServletResponse res)throws IOException, ServletException
+    {
+        RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF03.jsp");
+        rd.forward(req,res);                     
+    }//doGetFase03 
 
     public void doGetFase11(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res, GC1Anios ga)throws IOException, ServletException
     {

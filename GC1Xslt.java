@@ -14,9 +14,9 @@ public class GC1Xslt
 
     public void setXslt(ArrayList<String> urlDocs)
     {
-        Integer indexstr = 7;
+        
         xslt.clear();
-        urlDocs.remove(urlDocs.size()-1);        
+        //urlDocs.remove(urlDocs.size()-1);        
         xslt = urlDocs;
     }             
     public ArrayList<String> getXslt()
