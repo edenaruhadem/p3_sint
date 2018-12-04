@@ -6,7 +6,7 @@ var fichero;
 
 function Init(fichero){ 
   var myXMLHTTPRequest = new XMLHttpRequest();
-  myXMLHTTPRequest.open("GET", "mml-html.xsl", false);
+  myXMLHTTPRequest.open("GET", "mml-html.xslt", false);
   myXMLHTTPRequest.send(null);
 
   xslStylesheet = myXMLHTTPRequest.responseXML;
@@ -27,6 +27,8 @@ function Init(fichero){
   myDOM = fragment;
   document.getElementById("tabla").appendChild(fragment);
 }
+
+
 
 
   

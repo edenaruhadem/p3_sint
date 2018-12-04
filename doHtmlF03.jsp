@@ -23,7 +23,7 @@
         <button id = "tres" value = "${aniBean.hanio.get("3")}"/>
         <button id = "cuatro" value = "${aniBean.hanio.get("4")}"/>-->        
         <br></br>               
-        <div id="tabla" />       
+        <div id="tabla"></div>            
         <form>        
         <button type = 'submit' class = 'buttonInicio'>Inicio</button>        
         <input type = 'hidden' name = 'p' value = 'd4r18c392b'></input>
