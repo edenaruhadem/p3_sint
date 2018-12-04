@@ -53,9 +53,4 @@
         </body>
     </html>
     </xsl:template>
-
-    <xsl:template match="Disco">
-    <tr> <td></td>  </tr>
-    </xsl:template>
-
 </xsl:stylesheet>

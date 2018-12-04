@@ -1,0 +1,186 @@
+<?xml  version="1.0"  encoding="utf-8" standalone="no" ?> 
+
+<Songs>
+
+  <Anio>2004</Anio>
+
+  <Pais pais="España" lang="es">
+    
+      <Disco idd="2004-001-001" langs="es it de">
+        <Titulo>Eh, Sabina</Titulo>
+        <Premios> <Premio>LamparaMinera</Premio> </Premios>
+        <Interprete>Joaquín Sabina</Interprete>
+        <Cancion idc="2004-001-001-01"> 
+          <Titulo>Eh, Sabina</Titulo>
+          <Duracion>300</Duracion>
+          Primera del Eh, Sabina
+          <Genero>Rock</Genero>
+          <Version anio="2016">
+               <Titulo>Hey Sabina</Titulo>
+               <IML>iml2016.xml</IML>
+          </Version>
+        </Cancion>
+        <Cancion idc="2004-001-001-02">
+          Segunda del Eh, Sabina
+          <Titulo>Calle Melancolía</Titulo>
+          <Duracion>203</Duracion>
+          <Genero>Balada</Genero>
+          <Version anio="2001">
+               <Titulo>Melancolía Street</Titulo>
+               <IML>iml2001.xml</IML>
+          </Version>
+        </Cancion>
+        <Cancion idc="2004-001-001-03">
+          <Titulo>Juana la Loca</Titulo>
+          <Duracion>296</Duracion>
+          <Genero>Pop</Genero>
+          Tercera del Eh, Sabina
+        </Cancion>       
+      </Disco>
+
+     <Disco idd="2004-001-002" langs="es it">
+        <Titulo>Oh, qué raro soy</Titulo>
+        <Premios> <Premio>DiscoDeOro</Premio> <Premio>LamparaMinera</Premio></Premios>
+        <Interprete>Siniestro Total</Interprete>
+        <Cancion idc="2004-001-002-01"> 
+          <Titulo>Oh, qué raro soy</Titulo>
+          <Duracion>370</Duracion>
+          Primera del Oh, qué raro soy
+          <Genero>Balada</Genero>
+          <Version anio="2017">
+               <Titulo>Raro, raro</Titulo>
+               <IML>iml2017.xml</IML>
+          </Version>
+        </Cancion>
+        <Cancion idc="2004-001-002-02">
+          Segunda del Oh, qué raro soy
+          <Titulo>Si yo canto</Titulo>
+          <Duracion>310</Duracion>
+          <Genero>Country</Genero>
+          <Version anio="2002">
+               <Titulo>Si yo tarareo</Titulo>
+               <IML>iml2002.xml</IML>
+          </Version>
+        </Cancion>
+        <Cancion idc="2004-001-002-03">
+          <Titulo>La matanza de taxis</Titulo>
+          Tercera del Oh, qué raro soy
+          <Duracion>290</Duracion>
+          <Genero>Pop</Genero>
+        </Cancion>       
+      </Disco>     
+ 
+  </Pais>
+  
+  
+  <Pais pais="Italia" lang="it">
+      
+      <Disco idd="2004-002-001" langs="it es">
+        <Titulo>Catene</Titulo>
+         <Premios><Premio>Grammy</Premio><Premio>DiscoDeOro</Premio></Premios>
+        <Interprete>Mina</Interprete>
+        <Cancion idc="2004-002-001-01"> 
+          <Titulo>Catene</Titulo>
+          <Duracion>280</Duracion>
+          <Genero>Pop</Genero>
+          Primera del Catene
+        </Cancion>
+        <Cancion idc="2004-002-001-02">
+          <Titulo>La verità</Titulo>
+          <Duracion>310</Duracion>
+                    Segunda del Catene
+          <Genero>Balada</Genero>
+        </Cancion>
+        <Cancion idc="2004-002-001-03">
+          <Titulo>E la chiamano estate</Titulo>
+                    Tercera del Catene
+          <Duracion>295</Duracion>
+          <Genero>Rock</Genero>
+        </Cancion>       
+      </Disco>
+
+     <Disco idd="2004-002-002" langs="it fr de">
+        <Titulo>Gommalacca</Titulo>
+        <Premios> <Premio>DiscoDeOro</Premio> </Premios>
+        <Interprete>Franco Battiato</Interprete>
+        <Cancion idc="2004-002-002-01"> 
+          <Titulo>Gommalacca</Titulo>
+                    Primera del Gommalacca
+          <Duracion>313</Duracion>
+          <Genero>Pop</Genero>
+        </Cancion>
+        <Cancion idc="2004-002-002-02">
+          Segunda del Gommalacca
+          <Titulo>Shock in my town</Titulo>
+          <Duracion>220</Duracion>
+          <Genero>Rock</Genero>
+        </Cancion>
+        <Cancion idc="2004-002-002-03">
+          <Titulo>Auto da fe</Titulo>
+          <Duracion>404</Duracion>
+          <Genero>Pop</Genero>
+                    Tercera del Gommalacca
+        </Cancion>       
+      </Disco>     
+
+  </Pais>
+  
+  
+    <Pais pais="EEUU" lang="en">
+      
+      <Disco idd="2004-003-001" langs="en es">
+        <Titulo>Nebraska</Titulo>
+        <Premios><Premio>Grammy</Premio></Premios>
+        <Interprete>Bruce Springsteen</Interprete>
+        <Cancion idc="2004-003-001-01"> 
+          <Titulo>Nebraska</Titulo>
+          <Duracion>230</Duracion>
+                    Primera del Nebraska
+          <Genero>Rock</Genero>
+        </Cancion>
+        <Cancion idc="2004-003-001-02">
+          Segunda del Nebraska
+          <Titulo>Atlantic City</Titulo>
+          <Duracion>320</Duracion>
+          <Genero>Country</Genero>
+        </Cancion>
+        <Cancion idc="2004-003-001-03">
+          Tercera del Nebraska
+          <Titulo>State Trooper</Titulo>
+          <Duracion>375</Duracion>
+          <Genero>Balada</Genero>
+          <Version anio="2020">
+               <Titulo>Trooper provinciano</Titulo>
+               <IML>iml2020.xml</IML>
+          </Version>
+        </Cancion>       
+      </Disco>
+
+     <Disco idd="2004-003-002">
+        <Titulo>Break every rule</Titulo>
+        <Premios> <Premio>LamparaMinera</Premio> <Premio>Grammy</Premio></Premios>
+        <Interprete>Tina Turner</Interprete>
+        <Cancion idc="2004-003-002-01"> 
+          <Titulo>Break every rule</Titulo>
+                    Primera del Break every rule
+          <Duracion>412</Duracion>
+          <Genero>Rock</Genero>
+        </Cancion>
+        <Cancion idc="2004-003-002-02">
+          Segunda del Break every rule
+          <Titulo>Typical Male</Titulo>
+          <Duracion>480</Duracion>
+          <Genero>Pop</Genero>
+        </Cancion>
+        <Cancion idc="2004-003-002-03">
+          <Titulo>Two people</Titulo>
+          <Duracion>314</Duracion>
+                    Tercera del Break every rule
+          <Genero>Country</Genero>
+        </Cancion>       
+      </Disco>     
+
+  </Pais>
+    
+    
+</Songs>

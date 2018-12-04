@@ -1,0 +1,190 @@
+<?xml  version="1.0"  encoding="utf-8" standalone="no" ?> 
+
+<Songs>
+
+  <Anio>2003</Anio>
+
+  <Pais pais="España" lang="es">
+    
+      <Disco idd="2003-001-001" langs="es fr">
+        <Titulo>19 días y 500 noches</Titulo>
+        <Premios> <Premio>DiscoDeOro</Premio> <Premio>LamparaMinera</Premio> </Premios>
+        <Interprete>Joaquín Sabina</Interprete>
+        <Cancion idc="2003-001-001-01"> 
+          <Titulo>19 días y 500 noches</Titulo>
+          <Duracion>400</Duracion>
+          <Genero>Pop</Genero>
+          Primera del 19 días y 500 noches
+        </Cancion>
+        <Cancion idc="2003-001-001-02">
+          Segunda del 19 días y 500 noches
+          <Titulo>Una Canción Para La Magdalena</Titulo>
+          <Duracion>300</Duracion>
+          <Genero>Balada</Genero>
+        </Cancion>
+        <Cancion idc="2003-001-001-03">
+          Tercera del 19 días y 500 noches
+          <Titulo>A Mis Cuarenta y Diez</Titulo>
+          <Duracion>290</Duracion>
+          <Genero>Country</Genero>
+          <Version anio="2012">
+               <Titulo>A mis cincuenta</Titulo>
+               <IML>iml2012.xml</IML>
+          </Version>
+        </Cancion>       
+      </Disco>
+
+     <Disco idd="2003-001-002">
+        <Titulo>Bailaré sobre tu tumba</Titulo>
+        <Premios> <Premio>Grammy</Premio> <Premio>LamparaMinera</Premio> <Premio>DiscoDeOro</Premio></Premios>
+        <Interprete>Siniestro Total</Interprete>
+        <Cancion idc="2003-001-002-01"> 
+          <Titulo>Bailaré sobre tu tumba</Titulo>
+          <Duracion>270</Duracion>
+          <Genero>Balada</Genero>
+          Primera del Bailaré sobre tu tumba
+        </Cancion>
+        <Cancion idc="2003-001-002-02">
+          Segunda del Bailaré sobre tu tumba
+          <Titulo>Al final</Titulo>
+          <Duracion>305</Duracion>
+          <Genero>Country</Genero>
+          <Version anio="2002">
+               <Titulo>Danzaré sobre tu ataud</Titulo>
+               <IML>iml2002.xml</IML>
+          </Version>
+        </Cancion>
+        <Cancion idc="2003-001-002-03">
+          Tercera del Bailaré sobre tu tumba
+          <Titulo>Rock en Samil</Titulo>
+          <Duracion>280</Duracion>
+          <Genero>Balada</Genero>
+        </Cancion>       
+      </Disco>     
+ 
+  </Pais>
+  
+  
+  <Pais pais="EEUU" lang="en">
+      
+      <Disco idd="2003-002-001" langs="en es">
+        <Titulo>Wrecking Ball</Titulo>
+         <Premios><Premio>Grammy</Premio></Premios>
+        <Interprete>Bruce Springsteen</Interprete>
+        <Cancion idc="2003-002-001-01"> 
+          <Titulo>Wrecking Ball</Titulo>
+          <Duracion>380</Duracion>
+          <Genero>Balada</Genero>
+          Primera del Wrecking Ball
+          <Version anio="2013">
+               <Titulo>Ball broken</Titulo>
+               <IML>iml2013.xml</IML>
+          </Version>
+        </Cancion>
+        <Cancion idc="2003-002-001-02">
+          Segunda del Wrecking Ball
+          <Titulo>We are alive</Titulo>
+          <Duracion>410</Duracion>
+          <Genero>Rock</Genero>
+        </Cancion>
+        <Cancion idc="2003-002-001-03">
+          Tercera del Wrecking Ball
+          <Titulo>American Land</Titulo>
+          <Duracion>275</Duracion>
+          <Genero>Country</Genero>
+        </Cancion>       
+      </Disco>
+
+     <Disco idd="2003-002-002">
+        <Titulo>Foreign Affair</Titulo>
+        <Premios> <Premio>DiscoDeOro</Premio> <Premio>LamparaMinera</Premio></Premios>
+        <Interprete>Tina Turner</Interprete>
+        <Cancion idc="2003-002-002-01"> 
+          <Titulo>Foreign Affair</Titulo>
+          <Duracion>373</Duracion>
+          <Genero>Rock</Genero>
+          Primera del Foreign Affair
+        </Cancion>
+        <Cancion idc="2003-002-002-02">
+          Segunda del Foreign Affair
+          <Titulo>The Best</Titulo>
+          <Duracion>250</Duracion>
+          <Genero>Rock</Genero>
+          <Version anio="2015">
+               <Titulo>The more good</Titulo>
+               <IML>iml2015.xml</IML>
+          </Version>
+        </Cancion>
+        <Cancion idc="2003-002-002-03">
+          Tercera del Foreign Affair
+          <Titulo>Steamy Windows</Titulo>
+          <Duracion>414</Duracion>
+          <Genero>Pop</Genero>
+        </Cancion>       
+      </Disco>     
+
+  </Pais>
+  
+  
+    <Pais pais="Italia" lang="en">
+      
+      <Disco idd="2003-003-001" langs="it es">
+        <Titulo>Plurale</Titulo>
+        <Premios> <Premio>LamparaMinera</Premio> </Premios>
+        <Interprete>Mina</Interprete>
+        <Cancion idc="2003-003-001-01"> 
+          <Titulo>Plurale</Titulo>
+          <Duracion>230</Duracion>
+          <Genero>Pop</Genero>
+          Primera del Plurale
+        </Cancion>
+        <Cancion idc="2003-003-001-02">
+          Segunda del Plurale
+          <Titulo>Scettico Blues</Titulo>
+          <Duracion>320</Duracion>
+          <Genero>Rock</Genero>
+        </Cancion>
+        <Cancion idc="2003-003-001-03">
+          Tercera del Plurale
+          <Titulo>Mood Indigo</Titulo>
+          <Duracion>375</Duracion>
+          <Genero>Country</Genero>
+          <Version anio="2014">
+               <Titulo>Mood blue</Titulo>
+               <IML>iml2014.xml</IML>
+          </Version>
+        </Cancion>       
+      </Disco>
+
+     <Disco idd="2003-003-002" langs="it es en">
+        <Titulo>Hierro Forjado</Titulo>
+        <Premios> <Premio>LamparaMinera</Premio> <Premio>Grammy</Premio></Premios>
+        <Interprete>Franco Battiato</Interprete>
+        <Cancion idc="2003-003-002-01"> 
+          <Titulo>Hierro Forjado</Titulo>
+          <Duracion>222</Duracion>
+          <Genero>Pop</Genero>
+          Primera del Hierro Forjado
+        </Cancion>
+        <Cancion idc="2003-003-002-02">
+          Segunda del Hierro Forjado
+          <Titulo>Vida en diagonal</Titulo>
+          <Duracion>400</Duracion>
+          <Genero>Pop</Genero>
+        </Cancion>
+        <Cancion idc="2003-003-002-03">
+          Tercera del Hierro Forjado
+          <Titulo>Hey Joe</Titulo>
+          <Duracion>354</Duracion>
+          <Genero>Rock</Genero>
+          <Version anio="2004">
+               <Idc>2004-001-002-03</Idc>
+               <IML>iml2004.xml</IML>
+          </Version>
+        </Cancion>       
+      </Disco>     
+
+  </Pais>
+    
+    
+</Songs>

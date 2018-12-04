@@ -39,7 +39,7 @@ import Xbean.GC1Errores;
 import Xbean.GC1Resultado;
 import Xbean.GC1Resultadojson;
 import Xbean.GC1Canciones;
-import Xbean.GC1Xslt;
+//import Xbean.GC1Xslt;
 
 //import Xbean.FileError;
 
@@ -60,8 +60,7 @@ public class Sint48P3 extends HttpServlet
     GC1Canciones gc;
     GC1Resultado gr;
     GC1Errores ge;
-    GC1Resultadojson gj;
-    GC1Xslt gxslt;
+    GC1Resultadojson gj;    
 	//Declaración de estructuras de datos
     public static HashMap<String,Document> mapDocs = new HashMap<String,Document>();
     public static ArrayList<String> urlDocs = new ArrayList<String>();    
@@ -175,8 +174,7 @@ public class Sint48P3 extends HttpServlet
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
     {       
         ServletContext sc = req.getServletContext();
-        String p = req.getParameter("p");
-        String fxslt = req.getParameter("pxslt");
+        String p = req.getParameter("p");        
         String fase = req.getParameter("pfase");
         String anio = req.getParameter("panio");
         String idd = req.getParameter("pidd");
@@ -186,8 +184,7 @@ public class Sint48P3 extends HttpServlet
         gd = new GC1Discos();
         gc = new GC1Canciones();
         gr = new GC1Resultado();
-        gj = new GC1Resultadojson();
-        gxslt = new GC1Xslt();
+        gj = new GC1Resultadojson();        
         //----------------------------- Objetos para las java beans ---------------------
         //fe = new GetFileError();             
         //req.setAttribute("anioBean",ga); //Esto para los años       
@@ -206,7 +203,7 @@ public class Sint48P3 extends HttpServlet
             String faseinicial = "01";
             if((fase==null) || (fase.equals(faseinicial)))
             {                
-                doGetFase01(auto,sc,req,res,urlDocs);
+                doGetFase01(auto,sc,req,res);
             }
             else
             {
@@ -214,7 +211,7 @@ public class Sint48P3 extends HttpServlet
                 {                        
                     //case "01": doGetFase01(auto,sc,req,res); break;                    
                     case "02": doGetFase02(auto,sc,req,res); break;
-                    case "03": doGetFase03(sc,req,res);
+                    case "03": doGetFase03(sc,req,res,ga);
                     case "11": doGetFase11(auto,sc,req,res,ga); break;
                     case "12": doGetFase12(auto,sc,req,res,anio,gd); break;
                     case "13": doGetFase13(auto,sc,req,res,anio,idd,gc); break;
@@ -241,11 +238,8 @@ public class Sint48P3 extends HttpServlet
         }        
     }
 
-    public void doGetFase01(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res, ArrayList<String> urlDocs)throws IOException, ServletException
-    {
-        gxslt.setXslt(urlDocs);
-        req.setAttribute("xsltBean",gxslt);
-        //req.setAttribute("feBean",fe);
+    public void doGetFase01(String auto, ServletContext sc, HttpServletRequest req, HttpServletResponse res)throws IOException, ServletException
+    {        
         if(auto==null)
         {
             RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF01.jsp"); //habia sc.
@@ -276,8 +270,10 @@ public class Sint48P3 extends HttpServlet
         }         
     }//doGetFase02
     
-    public void doGetFase03(ServletContext sc, HttpServletRequest req, HttpServletResponse res)throws IOException, ServletException
+    public void doGetFase03(ServletContext sc, HttpServletRequest req, HttpServletResponse res, GC1Anios ga)throws IOException, ServletException
     {
+        ga.setHanio(mapDocs);
+        req.setAttribute("aniBean",ga);
         RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF03.jsp");
         rd.forward(req,res);                     
     }//doGetFase03 

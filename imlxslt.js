@@ -1,12 +1,10 @@
 var xslStylesheet;
 var xsltProcessor = new XSLTProcessor();
 var myDOM;
-
 var xmlDoc;
+var fichero;
 
-function Init(){
-  //document.getElementById("tabla").innerHTML = "a";
-  // load the xslt file, example1.xsl
+function Init(fichero){ 
   var myXMLHTTPRequest = new XMLHttpRequest();
   myXMLHTTPRequest.open("GET", "mml-html.xsl", false);
   myXMLHTTPRequest.send(null);
@@ -17,7 +15,7 @@ function Init(){
 
   // load the xml file, example1.xml
   myXMLHTTPRequest = new XMLHttpRequest();
-  myXMLHTTPRequest.open("GET", "iml2001.xml", false);
+  myXMLHTTPRequest.open("GET", fichero, false);
   myXMLHTTPRequest.send(null);
 
   xmlDoc = myXMLHTTPRequest.responseXML;
@@ -29,3 +27,7 @@ function Init(){
   myDOM = fragment;
   document.getElementById("tabla").appendChild(fragment);
 }
+
+
+  
+

@@ -1,0 +1,185 @@
+<?xml  version="1.0"  encoding="utf-8" standalone="no" ?> 
+
+<Songs>
+
+  <Anio>2002</Anio>
+
+  <Pais pais="Italia" lang="it">
+    
+      <Disco idd="2002-001-001" langs="it fr">
+        <Titulo>Amanti di valore</Titulo>
+        <Premios> <Premio>DiscoDeOro</Premio> <Premio>LamparaMinera</Premio> </Premios>
+        <Interprete>Mina</Interprete>
+        <Cancion idc="2002-001-001-01">
+                    Primera del Amanti di valore
+          <Titulo>Amanti di valore</Titulo>
+          <Duracion>200</Duracion>
+          <Genero>Balada</Genero>
+        </Cancion>
+        <Cancion idc="2002-001-001-02">
+          Segunda del Amanti di valore
+          <Titulo>La vita goccia a goccia</Titulo>
+          <Duracion>350</Duracion>
+          <Genero>Pop</Genero>
+          <Version anio="2008">
+               <Idc>2008-001-002-03</Idc>
+               <IML>iml2008.xml</IML>
+          </Version>
+        </Cancion>
+        <Cancion idc="2002-001-001-03">
+          <Titulo>Un po d'uva</Titulo>
+          Tercera del Amanti di valore
+          <Duracion>260</Duracion>
+          <Genero>Balada</Genero>
+        </Cancion>       
+      </Disco>
+
+     <Disco idd="2002-001-002"  langs="it en">
+        <Titulo>Patriots</Titulo>
+        <Premios> <Premio>Grammy</Premio> <Premio>LamparaMinera</Premio></Premios>
+        <Interprete>Franco Battiato</Interprete>
+        <Cancion idc="2002-001-002-01"> 
+          <Titulo>Patriots</Titulo>
+          <Duracion>200</Duracion>
+          <Genero>Balada</Genero>
+          Primera del Patriots
+        </Cancion>
+        <Cancion idc="2002-001-002-02">
+          <Titulo>Venezia-Istambul</Titulo>
+          <Duracion>300</Duracion>
+          <Genero>Country</Genero>
+            Segunda del Patriots
+        </Cancion>
+        <Cancion idc="2002-001-002-03">
+          Tercera del Patriots
+          <Titulo>Le Aquile</Titulo>
+          <Duracion>400</Duracion>
+          <Genero>Balada</Genero>
+        </Cancion>       
+      </Disco>     
+ 
+  </Pais>
+  
+  
+  <Pais pais="EEUU" lang="en">
+      
+      <Disco idd="2002-002-001" langs="en it de">
+        <Titulo>The river</Titulo>
+        <Interprete>Bruce Springsteen</Interprete>
+        <Cancion idc="2002-002-001-01"> 
+          <Titulo>The river</Titulo>
+          <Duracion>330</Duracion>
+          <Genero>Pop</Genero>
+          Primera del The river
+          <Version anio="2009">
+               <Titulo>The lake</Titulo>
+               <IML>iml2009.xml</IML>
+          </Version>
+        </Cancion>
+        <Cancion idc="2002-002-001-02">
+          Segunda del The river
+          <Titulo>Jackson Cage</Titulo>
+          <Duracion>400</Duracion>
+          <Genero>Rock</Genero>
+        </Cancion>
+        <Cancion idc="2002-002-001-03">
+          Tercera del The river
+          <Titulo>Hungry Heart</Titulo>
+          <Duracion>255</Duracion>
+          <Genero>Rock</Genero>
+        </Cancion>       
+      </Disco>
+
+     <Disco idd="2002-002-002"  langs="it en fr">
+        <Titulo>Wildest dreams</Titulo>
+        <Premios> <Premio>DiscoDeOro</Premio> </Premios>
+        <Interprete>Tina Turner</Interprete>
+        <Cancion idc="2002-002-002-01">
+          Primera del Wildest dreams
+          <Titulo>Wildest dreams</Titulo>
+          <Duracion>303</Duracion>
+          <Genero>Rock</Genero>
+          <Version anio="2011">
+               <Titulo>Savage sleep</Titulo>
+               <IML>iml2011.xml</IML>
+          </Version>
+        </Cancion>
+        <Cancion idc="2002-002-002-02">
+          Segunda del Wildest dreams
+          <Titulo>Missing you</Titulo>
+          <Duracion>350</Duracion>
+          <Genero>Balada</Genero>
+        </Cancion>
+        <Cancion idc="2002-002-002-03">
+          <Titulo>Whatever you want</Titulo>
+          Tercera del Wildest dreams
+          <Duracion>214</Duracion>
+          <Genero>Rock</Genero>
+        </Cancion>       
+      </Disco>     
+
+  </Pais>
+  
+  
+    <Pais pais="España" lang="es">
+      
+      <Disco idd="2002-003-001" langs="it es">
+        <Titulo>Física y Química</Titulo>
+        <Premios> <Premio>LamparaMinera</Premio> </Premios>
+        <Interprete>Joaquín Sabina</Interprete>
+        <Cancion idc="2002-003-001-01"> 
+          <Titulo>Física y Química</Titulo>
+          <Duracion>430</Duracion>
+          <Genero>Balada</Genero>
+          Primera del Física y Química
+        </Cancion>
+        <Cancion idc="2002-003-001-02">
+          <Titulo>Y nos dieron las diez</Titulo>
+          <Duracion>310</Duracion>
+          Segunda del Física y Química
+          <Genero>Balada</Genero>
+          <Version anio="2010">
+               <Titulo>Y las once</Titulo>
+               <IML>iml2010.xml</IML>
+          </Version>
+        </Cancion>
+        <Cancion idc="2002-003-001-03">
+          <Titulo>La del pirata cojo</Titulo>
+          <Duracion>325</Duracion>
+          <Genero>Rock</Genero>
+          Tercera del Física y Química
+        </Cancion>       
+      </Disco>
+
+     <Disco idd="2002-003-002">
+        <Titulo>Menos mal que nos queda Portugal</Titulo>
+        <Premios> <Premio>LamparaMinera</Premio> <Premio>DiscoDeOro</Premio> <Premio>Grammy</Premio></Premios>
+        <Interprete>Siniestro Total</Interprete>
+        <Cancion idc="2002-003-002-01"> 
+          <Titulo>Menos mal que nos queda Portugal</Titulo>
+          <Duracion>412</Duracion>
+          <Genero>Rock</Genero>
+          Primera del Menos mal que nos queda Portugal
+        </Cancion>
+        <Cancion idc="2002-003-002-02">
+          Segunda del Menos mal que nos queda Portugal
+          <Titulo>Que corra la nicotina</Titulo>
+          <Duracion>300</Duracion>
+          <Genero>Country</Genero>
+        </Cancion>
+        <Cancion idc="2002-003-002-03">
+          <Titulo>Señor, ilumina mi corazón</Titulo>
+          <Duracion>334</Duracion>
+          <Genero>Pop</Genero>
+          Tercera del Menos mal que nos queda Portugal
+          <Version anio="2003">
+               <Titulo>Light the heart</Titulo>
+               <IML>iml2002.xml</IML>
+          </Version>
+        </Cancion>       
+      </Disco>     
+
+  </Pais>
+    
+    
+</Songs>
