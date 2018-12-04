@@ -24,17 +24,7 @@
 
         </form>
         <form name = 'miformfase03' action=''>        
-        <h3>XSLT</h3>
-        <!--<c:forEach var = "i" items = "${aniBean.hanio}">
-        <c:choose>
-        <c:when test="${(i.getKey())==1}">
-        <input type = 'radio' name = 'pxslt' value = "${i.getValue()}"checked>${i.getValue()}</input><p>
-        </c:when>
-        <c:otherwise>
-        <input type = 'radio' name = 'pxslt' value = "${i.getValue()}">${i.getValue()}</input><p>
-        </c:otherwise>
-        </c:choose>              
-        </c:forEach>-->        
+        <h3>XSLT</h3>              
         <input type = 'submit' value = 'IML 2 XSLT'></input>
         <input type = 'hidden' name = 'p' value = d4r18c392b></input>
         <input type = 'hidden' name = 'pfase' value = '03'></input>        
