@@ -33,13 +33,13 @@
                                 <tr><xsl:value-of select="@idc"/></tr>                                                          
                                 <tr>
                                     <table border="1">
-                                        <tr><th>Titulo</th><th>Duracion</th><th>Genero</th><th>Version</th></tr>                                                                
+                                        <tr><th>Titulo</th><th>Duracion</th><th>Genero</th><th>Version</th><th>Descripcion</th></tr>                                                                
                                         <tr><td><xsl:value-of select="Titulo"/></td><td><xsl:value-of select="Duracion"/></td><td><xsl:value-of select="Genero"/></td>
                                             <td><table border ="1">
                                                 <tr><xsl:value-of select="Version/@anio"/></tr>
                                                 <tr><th>Titulo</th><th>IML</th><th>Idc</th></tr>
                                                 <tr><td><xsl:value-of select="Version/Titulo"/></td><td><xsl:value-of select="Version/IML"/></td><td><xsl:value-of select="Version/Idc"/></td></tr>
-                                            </table></td>                                        
+                                            </table></td>                                                                                    
                                         </tr>
                                     </table>
                                 </tr>
