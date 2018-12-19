@@ -4,26 +4,35 @@ var myDOM;
 var xmlDoc;
 var fichero;
 
-function Init(fichero){ 
-  var myXMLHTTPRequest = new XMLHttpRequest();
-  myXMLHTTPRequest.open("GET", "mml-html.xslt", false);
-  myXMLHTTPRequest.send(null);
+/*function Load(){
 
-  xslStylesheet = myXMLHTTPRequest.responseXML;
+  var myXMLHTTPRequestxslt = new XMLHttpRequest();
+  myXMLHTTPRequestxslt.open("GET", "mml-html.xslt", false);
+  myXMLHTTPRequestxslt.send(null);
+  xslStylesheet = myXMLHTTPRequestxslt.responseXML;
+  xsltProcessor.importStylesheet(xslStylesheet);
+
+}*/
+
+
+function Init(fichero){ 
+  var myXMLHTTPRequestxslt = new XMLHttpRequest();
+  myXMLHTTPRequestxslt.open("GET", "mml-html.xslt", false);
+  myXMLHTTPRequestxslt.send(null);
+
+  xslStylesheet = myXMLHTTPRequestxslt.responseXML;
   xsltProcessor.importStylesheet(xslStylesheet);
 
 
   // load the xml file, example1.xml
-  myXMLHTTPRequest = new XMLHttpRequest();
-  myXMLHTTPRequest.open("GET", fichero, false);
-  myXMLHTTPRequest.send(null);
-
-  xmlDoc = myXMLHTTPRequest.responseXML;
-
+  myXMLHTTPRequestxml = new XMLHttpRequest();
+  var url = 'http://gssi.det.uvigo.es/users/agil/public_html/SINT/18-19/';
+  var urlc = url.concat(fichero);
+  myXMLHTTPRequestxml.open("GET", urlc, true); //ficheroo. Tenia false
+  myXMLHTTPRequestxml.send(); //Tenia null
+  xmlDoc = myXMLHTTPRequestxml.responseXML;
   var fragment = xsltProcessor.transformToFragment(xmlDoc, document);
-
   document.getElementById("tabla").innerHTML = "";
-
   myDOM = fragment;
   document.getElementById("tabla").appendChild(fragment);
 }
