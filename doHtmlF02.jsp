@@ -6,7 +6,7 @@
 <html>
     <head>        
         <title>Sint: Pr&aacute;ctica 2. Consulta de canciones</title>
-        <link rel='stylesheet' type='text/css' href='iml.css'></link>
+        <link rel='stylesheet' type='text/css' href='p3/iml.css'></link>
     </head>
     <body>
         <h1>Servicio de consulta de canciones</h1>

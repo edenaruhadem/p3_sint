@@ -8,7 +8,7 @@
 <html>
     <head>        
         <title>Sint: Pr&aacute;ctica 2. Consulta de canciones</title>
-        <link rel='stylesheet' type='text/css' href='iml.css'></link>
+        <link rel='stylesheet' type='text/css' href='p3/iml.css'></link>
     </head>
     <body>
         <h1>Servicio de consulta de canciones</h1>
@@ -18,7 +18,7 @@
         <button id="btna">Ascendente</button>
         <button id="btnd">Descendente</button>
         <div id="resultado"></div>
-        <script src="main.js"></script>       
+        <script src="p3/main.js"></script>       
         <form>        
         <button type = 'submit' class = 'buttonAtras'>Atr&aacute;s</button>        
         <input type = 'hidden' name = 'p' value = 'd4r18c392b'></input>

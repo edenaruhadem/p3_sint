@@ -7,15 +7,15 @@
 <html>
     <head>        
         <title>Sint: Pr&aacute;ctica 2. Consulta de canciones</title>
-        <link rel='stylesheet' type='text/css' href='iml.css'></link>
-        <script src="imlxslt.js"></script>
+        <link rel='stylesheet' type='text/css' href='p3/iml.css'></link>
+        <script src="p3/imlxslt.js"></script>
     </head>
     <body>
         <h1>Servicio de consulta de canciones. Transformaciones XSLT</h1>        
-        <button onclick="Init('iml2001.xml')">${aniBean.hanio.get("1")}</button>
-        <button onclick="Init('iml2002.xml')">${aniBean.hanio.get("2")}</button>
-        <button onclick="Init('iml2003.xml')">${aniBean.hanio.get("3")}</button>
-        <button onclick="Init('iml2004.xml')">${aniBean.hanio.get("4")}</button>
+        <button onclick="Init('p3/iml2001.xml')">${aniBean.hanio.get("1")}</button>
+        <button onclick="Init('p3/iml2002.xml')">${aniBean.hanio.get("2")}</button>
+        <button onclick="Init('p3/iml2003.xml')">${aniBean.hanio.get("3")}</button>
+        <button onclick="Init('p3/iml2004.xml')">${aniBean.hanio.get("4")}</button>
                 
         <br></br>               
         <div id="tabla"></div>            

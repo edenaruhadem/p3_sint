@@ -217,7 +217,7 @@ public class GC1Resultadojson
                 }
             }           
         }
-        try (FileWriter writer = new FileWriter("C:\\tomcat9\\apache-tomcat-9.0.12\\webapps\\sint481\\adata.json")) {
+        try (FileWriter writer = new FileWriter("C:\\tomcat9\\apache-tomcat-9.0.12\\webapps\\sint48\\p3\\adata.json")) {
 
             resultadojsona.toJson(resultado, writer);
     
@@ -410,7 +410,7 @@ public class GC1Resultadojson
                 }
             }           
         }
-        try (FileWriter writer = new FileWriter("C:\\tomcat9\\apache-tomcat-9.0.12\\webapps\\sint481\\ddata.json")) {
+        try (FileWriter writer = new FileWriter("C:\\tomcat9\\apache-tomcat-9.0.12\\webapps\\sint48\\p3\\ddata.json")) {
 
             resultadojsond.toJson(resultado, writer);
     

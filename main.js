@@ -4,7 +4,7 @@ var btnd = document.getElementById("btnd");
 
 btna.addEventListener("click", function(){             
     var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET','adata.json'); //Para recibir. POST para enviar
+    ourRequest.open('GET','p3/adata.json'); //Para recibir. POST para enviar
     ourRequest.onload = function(){
         if(ourRequest.status >= 200 && ourRequest.status < 400){
             var ourData = JSON.parse(ourRequest.responseText);
@@ -21,7 +21,7 @@ btna.addEventListener("click", function(){
 });
 btnd.addEventListener("click", function(){                
     var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET','ddata.json'); //Para recibir. POST para enviar
+    ourRequest.open('GET','p3/ddata.json'); //Para recibir. POST para enviar
     ourRequest.onload = function(){
         if(ourRequest.status >= 200 && ourRequest.status < 400){
             var ourData = JSON.parse(ourRequest.responseText);

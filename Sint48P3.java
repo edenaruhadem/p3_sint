@@ -79,7 +79,7 @@ public class Sint48P3 extends HttpServlet
         /*ServletContext sc = getServletContext();
         ServletContext context = config.sc;*/
         ServletContext context = config.getServletContext();        
-        File f= new File(context.getRealPath("iml.xsd"));
+        File f= new File(context.getRealPath("p3/iml.xsd"));
         String dir = f.getAbsolutePath();        
         String MY_SCHEMA = dir;
         ge = new GC1Errores();      
@@ -190,12 +190,12 @@ public class Sint48P3 extends HttpServlet
         //req.setAttribute("anioBean",ga); //Esto para los años       
         if((p==null)&&(auto.equals("si")))
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/doXmlNop.jsp"); //habia sc.
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/doXmlNop.jsp"); //habia sc.
             rd.forward(req,res);                       
         }
         else if((!p.equals("d4r18c392b"))&&(auto.equals("si")))
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/doXmlIp.jsp"); //habia sc.
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/doXmlIp.jsp"); //habia sc.
             rd.forward(req,res);            
         }        
 	    else
@@ -242,13 +242,13 @@ public class Sint48P3 extends HttpServlet
     {        
         if(auto==null)
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF01.jsp"); //habia sc.
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/doHtmlF01.jsp"); //habia sc.
             rd.forward(req,res);
             //doHtmlF01(res); // doHtmlF01.jsp                
         }
         else if(auto.equals("si"))
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF01.jsp"); //habia sc.
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/doXmlF01.jsp"); //habia sc.
             rd.forward(req,res);
             //doXmlF01(res); //doXmlF01.jsp
         }        
@@ -260,12 +260,12 @@ public class Sint48P3 extends HttpServlet
         req.setAttribute("errBean",ge);        
         if(auto==null)
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF02.jsp");
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/doHtmlF02.jsp");
             rd.forward(req,res);                            
         }
         else if(auto.equals("si"))
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF02.jsp");
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/doXmlF02.jsp");
             rd.forward(req,res);            
         }         
     }//doGetFase02
@@ -274,7 +274,7 @@ public class Sint48P3 extends HttpServlet
     {
         ga.setHanio(mapDocs);
         req.setAttribute("aniBean",ga);
-        RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF03.jsp");
+        RequestDispatcher rd = sc.getRequestDispatcher("/p3/doHtmlF03.jsp");
         rd.forward(req,res);                     
     }//doGetFase03 
 
@@ -285,12 +285,12 @@ public class Sint48P3 extends HttpServlet
         req.setAttribute("aniBean",ga);        
         if(auto==null)
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF11.jsp"); //habia sc.
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/doHtmlF11.jsp"); //habia sc.
             rd.forward(req,res);                          
         }
         else if(auto.equals("si"))
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF11.jsp"); //habia sc.
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/doXmlF11.jsp"); //habia sc.
             rd.forward(req,res);            
         }        
     }//doGetFase11
@@ -300,7 +300,7 @@ public class Sint48P3 extends HttpServlet
                 
         if(anio==null)
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/wrongReqAnio.jsp");
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/wrongReqAnio.jsp");
             rd.forward(req,res);            
         }
         else
@@ -310,12 +310,12 @@ public class Sint48P3 extends HttpServlet
             req.setAttribute("disBean",gd);            
             if(auto==null)
             {
-                RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF12.jsp");
+                RequestDispatcher rd = sc.getRequestDispatcher("/p3/doHtmlF12.jsp");
                 rd.forward(req,res);                                
             }
             else if(auto.equals("si"))
             {
-                RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF12.jsp");
+                RequestDispatcher rd = sc.getRequestDispatcher("/p3/doXmlF12.jsp");
                 rd.forward(req,res);                
             }
         }               
@@ -325,12 +325,12 @@ public class Sint48P3 extends HttpServlet
     {        
         if(anio==null)
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/wrongReqAnio.jsp");
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/wrongReqAnio.jsp");
             rd.forward(req,res);
         }
         else if(idd==null)
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/wrongReqIdd.jsp");
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/wrongReqIdd.jsp");
             rd.forward(req,res);            
         }
         else
@@ -341,12 +341,12 @@ public class Sint48P3 extends HttpServlet
             req.setAttribute("canBean",gc);                    
             if(auto==null)
             {
-                RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF13.jsp");
+                RequestDispatcher rd = sc.getRequestDispatcher("/p3/doHtmlF13.jsp");
                 rd.forward(req,res);                             
             }
             else if(auto.equals("si"))
             {
-                RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF13.jsp");
+                RequestDispatcher rd = sc.getRequestDispatcher("/p3/doXmlF13.jsp");
                 rd.forward(req,res);                
             }
 
@@ -357,17 +357,17 @@ public class Sint48P3 extends HttpServlet
     {           
         if(anio==null)
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/wrongReqAnio.jsp");
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/wrongReqAnio.jsp");
             rd.forward(req,res);            
         }
         else if(idd==null)
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/wrongReqIdd.jsp");
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/wrongReqIdd.jsp");
             rd.forward(req,res);
         }
         else if(idc==null)
         {
-            RequestDispatcher rd = sc.getRequestDispatcher("/wrongReqIdc.jsp");
+            RequestDispatcher rd = sc.getRequestDispatcher("/p3/wrongReqIdc.jsp");
             rd.forward(req,res);            
         }
         else
@@ -390,12 +390,12 @@ public class Sint48P3 extends HttpServlet
             {
                 /*RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF14.jsp");
                 rd.forward(req,res);*/
-                RequestDispatcher rd = sc.getRequestDispatcher("/doHtmlF14Json.jsp");
+                RequestDispatcher rd = sc.getRequestDispatcher("/p3/doHtmlF14Json.jsp");
                 rd.forward(req,res);                               
             }
             else if(auto.equals("si"))
             {
-                RequestDispatcher rd = sc.getRequestDispatcher("/doXmlF14.jsp");
+                RequestDispatcher rd = sc.getRequestDispatcher("/p3/doXmlF14.jsp");
                 rd.forward(req,res);                
             }
         }               
