@@ -16,6 +16,7 @@
         <button onclick="Init('p3/iml2002.xml')">${aniBean.hanio.get("2")}</button>
         <button onclick="Init('p3/iml2003.xml')">${aniBean.hanio.get("3")}</button>
         <button onclick="Init('p3/iml2004.xml')">${aniBean.hanio.get("4")}</button>
+        <button onclick="Delete()">Borrar</button>
                 
         <br></br>               
         <div id="tabla"></div>            
